@@ -1,0 +1,46 @@
+{% comment %} image/base.html {% endcomment %}
+{% load static %}
+{% static 'папка/файл.расширение' %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Творим рядом</title>
+    <link rel="stylesheet" href="dist/index_style.scss">
+</head>
+
+
+<body>
+    
+    
+    {% include 'image/_header.html' %}
+        
+
+    <!-- мэин и эсайд -->
+    <div id="container-main-aside">
+        <!-- мэин-->
+        <main>
+           
+        </main>
+        <!-- КОНЕЦ мэин-->
+
+
+        <!-- эсайд -->
+        <aside aria-label="Боковая панель">
+           
+        </aside>
+        <!-- КОНЕЦ эсайд -->
+    </div>
+    <!-- КОНЕЦ мэин и эсайд -->
+
+
+    {% include 'image/_footer.html' %}
+
+    <!-- JS -->
+    <!-- Темная тема -->
+    <script src="theme_toggle.js"></script>
+    <!-- END JS -->
+</body>
+</html>

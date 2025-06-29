@@ -1,0 +1,104 @@
+<!-- HEADER -->
+<header>
+    <!--  верхний блок  -->
+    <div id="header-top">
+        <!--  логотип  -->
+        <div id="container-main-logo">
+            <img class="isimage" src={logo} alt="Логотип ЦДЮ" />
+        </div>
+
+        <!--  кнопка для бургер меню (Для телефонов)  -->
+        <button onClick={} class="nav_button but-open-menu-MP">☰</button>
+            
+        <!--  блок с НАВИГАЦИЕЙ и ПЕРЕКЛЮЧЕНИЕМ ТЕМЫ для ПК  -->
+        <div class="container-nav-theme-toggle-PC">
+            <!--  навигация  -->
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="nav_button">
+                            Главная
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav_button">
+                            Кружки
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav_button">
+                            Проекты и конкурсы
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav_button">
+                            Галерея
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!--  переключить тему  -->
+            <button id="container-night-theme-toggle" onClick="toggleTheme">
+                <img src="" alt="Переключить тему" title="Переключить тему"/>
+            </button>
+        </div>
+        <!--  КОНЕЦ блок с НАВИГАЦИЕЙ и ПЕРЕКЛЮЧЕНИЕМ ТЕМЫ для ПК  -->
+    </div>
+    <!--  КОНЕЦ верхний блок  -->
+
+    <!--  нижний блок (для телефонов)  -->
+    <div id="header-bottom">
+        <!--  блок с НАВИГАЦИЕЙ и ПЕРЕКЛЮЧЕНИЕМ ТЕМЫ для МТ  -->
+        <div class="container-nav-theme-toggle-MP">
+            <!--  навигация  -->
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="nav_button" >
+                            Главная
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav_button" >
+                            Кружки
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav_button" >
+                            Проекты и конкурсы
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav_button" >
+                            Галерея
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!--  переключить тему  -->
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                <!--  кнопка переключения темы  -->
+                    <button
+                        id="container-night-theme-toggle"
+                        onClick={toggleTheme}
+                        style="border-width: 0px"
+                    >
+                        <img
+                            src={night_theme_button}
+                            alt="Переключить тему"
+                            title="Переключить тему"
+                        />
+                    </button>
+                <!--  подпись переключения темы для телефонов  -->
+                <div class="container-title-night-theme-MP">
+                    <p>⬅ Переключить тему</p>
+                </div>
+            </div>
+        </div>
+        <!--  КОНЕЦ блок с НАВИГАЦИЕЙ и ПЕРЕКЛЮЧЕНИЕМ ТЕМЫ для МТ  -->
+    </div>
+    <!--  КОНЕЦ нижний блок (для телефонов)  -->
+</header>
+<!-- END HEADER -->
