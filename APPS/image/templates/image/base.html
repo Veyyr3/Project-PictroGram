@@ -1,6 +1,6 @@
 {% comment %} image/base.html {% endcomment %}
 {% load static %}
-{% static 'папка/файл.расширение' %}
+{% load sass_tags %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -8,13 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Творим рядом</title>
-    <link rel="stylesheet" href="dist/index_style.scss">
+    <link rel="stylesheet" href="{% sass_src  'scss/index_style.scss' %}">
 </head>
 
 
 <body>
-    
-    
+    {% comment %} header {% endcomment %}
     {% include 'image/_header.html' %}
         
 
@@ -35,7 +34,7 @@
     </div>
     <!-- КОНЕЦ мэин и эсайд -->
 
-
+    {% comment %} footer {% endcomment %}
     {% include 'image/_footer.html' %}
 
     <!-- JS -->

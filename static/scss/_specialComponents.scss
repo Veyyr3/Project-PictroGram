@@ -1,0 +1,37 @@
+// блок с линией
+.container-line-aside {
+    $border-width-line-aside: 4px; // ширина линии
+
+    // отступы левой линии
+    $left-line-margin-right: 8px;
+    $left-line-margin-left: 15px;
+    $left-line-margin-top: 5px;
+    $left-line-margin-bottom: 5px;
+
+    // отступы правой линии
+    $right-line-margin-right: 3px;
+    $right-line-margin-left: 8px;
+    $right-line-margin-top: 5px;
+    $right-line-margin-bottom: 5px;
+
+    background-color: var(--container-line-aside-bg-color);
+
+    // flex
+    display: flex;
+    flex-direction: row;
+
+    // для линий слева и справа
+    .left-line-aside, .right-line-aside {
+        border-left: $border-width-line-aside solid var(--text-blue);
+    }
+
+    // линия слева
+    .left-line-aside {
+        margin: $left-line-margin-top $left-line-margin-right $left-line-margin-bottom $left-line-margin-left;
+    }
+
+    // линия справа
+    .right-line-aside {
+        margin: $right-line-margin-top $right-line-margin-right $right-line-margin-bottom $right-line-margin-left;
+    }
+}

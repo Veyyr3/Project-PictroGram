@@ -111,16 +111,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static',]
+STATIC_URL = '/static/'
+# Указываем, где лежат исходные статические файлы (SCSS, JS, картинки)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+# Куда collectstatic будет складывать собранные файлы (для продакшена)
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # куда сохранять фото
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Настройки для django-sass-processor
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static/css')  # Куда складывать scss
 
+# Авто-компиляция при изменении SCSS (для разработки)
+SASS_PROCESSOR_ENABLED = True  # Поставь False на продакшене
+
+# Где искать SCSS (если они не в static/)
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(BASE_DIR, 'static/scss'),
+]
+
+# STATICFILES_FINDERS
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

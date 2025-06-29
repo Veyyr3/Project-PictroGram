@@ -1,0 +1,136 @@
+// ForMP.scss
+
+// адаптация под телефоны
+@media (min-width: 320px) and (max-width: 1000px) {
+    /*---------------------------------TECHNICAL---------------------------------*/
+    // #region TECHNICAL
+        // #region Общие Анимации
+            // отменить анимацию
+            *, *::before, *::after {
+                transition: none !important;
+                animation: none !important;
+                transform: none !important;
+            }
+        // #endregion Общие Анимации    
+
+        // ко всем классам, которые только для ПК
+        [class$="-PC"], [id*="-PC"], .PC {
+            display: none;
+        }
+
+        // ко всем классам, которые только для МТ
+        [class$="-MP"], [id*="-MP"], .MP {
+            display: block; // изначально
+        }
+
+        // задать заголовкам размеры
+        h1 {
+            font-size: 5rem;
+        }
+        h2 {
+            font-size: 3rem;
+        }
+        h3 {
+            font-size: 2rem;
+        }
+        h4 {
+            font-size: 2rem;
+        }
+
+        // для всех кнопок
+        button {
+            // при нажатии
+            &:active{
+                transform: scale(0.9) !important;
+            }
+        }
+    // #endregion TECHNICAL
+    /*---------------------------------END TECHNICAL---------------------------------*/
+
+    // #region Header
+        // нижняя часть хидера (Только для телефонов)
+        #header-bottom-MP {
+            margin-top: 10px;
+            padding: 1rem;
+        }
+
+        // исправить баг
+        header nav ul {
+            margin-top: 20px;
+            list-style: none;
+
+            // flex
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        // контейнер с навигацией и кнопкой переключении темы
+        .container-nav-theme-toggle-MP {
+            display: none; // изначально невидим
+        } .container-nav-theme-toggle-OPEN-MP { // открытое состояние
+            display: flex;
+            flex-direction: column;
+        }
+
+        // кнопка бургер-меню
+        .but-open-menu-MP {
+            margin-left: auto;
+            margin-right: 20px;
+            font-size: 70px;
+            background-color: var(--button-illum);
+            border-radius: 25px;
+        }
+
+        // кнокпа переключения темы
+        #container-night-theme-toggle {
+            margin-left: 10px;
+            max-width: 5rem;
+        }
+
+        // подпись переключения темы для телефонов
+        .container-title-night-theme-MP {
+            p {
+                font-size: 17pt;
+                color: var(--div-text);
+            }
+        }
+    // #endregion Header
+
+    // #region main
+        main {
+            margin: 2rem 1rem 2rem 1rem;
+        }
+    // #endregion main
+
+    // #region Footer
+        // футер
+        #contacts-footer {
+            // flex
+            display: flex;
+            flex-direction: column;
+        }
+
+        // левая часть
+        .footer-left {
+            width: 100%;
+        }
+
+        // правая часть
+        .footer-right {
+            width: 100%;
+
+            // flex
+            justify-content: center;
+            align-items: center;
+        }
+
+        // разделительная линия
+        .footer-line-between {
+            display: none;
+        }
+
+    // #endregion Footer
+
+}

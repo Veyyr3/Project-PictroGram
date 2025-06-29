@@ -1,0 +1,349 @@
+@use 'specialComponents';
+@use 'specialClasses';
+@use 'ForMP';
+
+
+// index.scss
+/*---------------------------------VARIABLES---------------------------------*/
+$font-size: 20pt; // размер шрифта
+
+// #region mixins---------------------------------------------------------------------
+    // Миксин для картинок, изменяя их размер
+    @mixin _imgs ($width, $border-radius: 25px, $border-width: 1px, $color: black, $border-type: solid) {
+        // стили для контейнера
+        max-width: $width;
+        height: auto;
+        display: flex; // Для правильного растягивания
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: $border-radius;
+            border: $border-width $border-type $color;
+            object-fit: cover; // заполнить весь контейнер
+        }
+    }
+
+
+    // Миксин для картинок, изменяя их размер
+    @mixin _imgs_no_border ($width) {
+        max-width: $width;
+        height: auto;
+        display: flex; // Для правильного растягивания
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; // заполнить весь контейнер
+        }
+    }
+
+
+    // Миксин для анимации. При наведении увеличиваться
+    @mixin _animation_transform_scale($duration, $scale) {
+        transition: transform $duration ease;
+        will-change: transform; // оптимизация
+
+        &:hover {
+            transform: scale($scale);
+        }
+    }
+// #endregion mixins ---------------------------------------------------------------
+/*---------------------------------END VARIABLES---------------------------------*/
+/*---------------------------------TECHNICAL---------------------------------*/
+
+// ко всем классам и айди, которые только для телефонов
+[class$="-MP"], [id*="-MP"], .MP {
+  display: none;
+}
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// задать заголовкам размеры
+h1 {
+    font-size: 5rem;
+}
+h2 {
+    font-size: 4rem;
+}
+h3 {
+    font-size: 3rem;
+}
+h4 {
+    font-size: 2rem;
+}
+
+// задать размер шрифта тексту
+p {
+    font-size: $font-size;
+    color: var(--main-text);
+}
+
+// корректные стили списков с исключением для кнопок навигации
+ul:not(nav ul), ol {
+    list-style: none; // контроль для кастомных списков
+
+    // Элемент списка
+    li {
+        padding-left: 0;
+
+        // flex
+        display: flex;
+        align-items: baseline; 
+
+        // кастомные маркеры
+        &::before {
+            // вид маркеров
+            content: counter(list-item) ".";
+            counter-increment: list-item;
+
+            // Стили для самого маркера (цифры)
+            font-size: $font-size;
+            font-weight: bold;
+            color: var(--text-blue);
+
+            // стили
+            margin-right: 0.5em; // Отступ между marker и li
+            min-width: 1.5em; // минимальная ширина, чтобы не прыгал от многозначных цифр
+            text-align: right;
+        }
+
+        // текст
+        p {
+            margin: 0; // Убрать любые стандартные отступы у параграфов внутри li
+            flex-grow: 1; // Позволит параграфу занять оставшееся пространство
+        }
+    }
+}
+
+// светлая тема
+body {
+    --bg-color: #edfafa; //фон
+    --main-text: #333333; // основной текст
+    --div-text: #FFFFFF; // цвет текста на шапках блоков
+    --button-illum: #8CB5FF; // кнопки подсветка
+    --div-hat: #6495ED; //хидер/футер/шапки блоков
+    --div-bg: #E9E4E4; //блоки
+    --text-red: #FF0000; //выделение текста красным
+    --text-title: #FDA638; //текст в заголовках
+    --text-blue: #333399; //выделение текста синим
+    --container-line-aside-bg-color: #E0F2F7; // задний цвет для блока с линией в стороне
+
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+
+    // для контейнеров плавная анимация переключения темы
+    header, footer {
+        transition: background-color 0.3s ease;
+    }
+
+    // для всех фото
+    .isimage {
+        filter: brightness(1);
+        transition: filter 0.3s ease;
+    }
+}
+
+// темная тема
+.dark-theme {
+    --bg-color: #313030; //фон
+    --main-text: #000000; // основной текст
+    --div-text: #FFFFFF; // цвет текста на шапках блоков
+    --button-illum: #4888FB; // кнопки подсветка
+    --div-hat: #5E77A3; //хидер/футер/шапки блоков
+    --div-bg: #B5B1B1; //блоки
+    --text-red: #FF0000; //выделение текста красным
+    --text-title: #FF8E00; //текст в заголовках
+    --text-blue: #333399; //выделение текста синим
+    --container-line-aside-bg-color: #b9d0d6; // задний цвет для блока с линией в стороне
+
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+
+    // для контейнеров плавная анимация переключения темы
+    header, footer {
+        transition: background-color 0.3s ease;
+    }
+
+    // для всех фото
+    .isimage {
+        filter: brightness(0.8);
+        transition: filter 0.3s ease;
+    }
+}
+/*---------------------------------END TECHNICAL---------------------------------*/
+
+// #region Header
+    header {
+        width: 100%;
+        background-color: var(--div-hat);
+        padding: 1rem;
+
+        // flex
+        display: flex;
+        flex-direction: column;
+    }
+
+    // верхняя часть хидера
+    #header-top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    // контейнер с навигацией и кнопкой переключении темы для ПК
+    .container-nav-theme-toggle-PC {
+        margin-left: auto; // поместить вправо
+
+        // flex
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+
+        // кнопки навигации
+        nav  { 
+            flex: auto;
+            padding: 0 1rem 0 1rem;
+
+            // flex
+            display: flex;
+            align-items: center;
+            justify-items: end;
+
+            // список
+            ul {
+                margin-left: auto;
+                list-style: none;                
+
+                // flex
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    }
+
+    // кнопки навигации
+    .nav_button {
+        background-color: var(--div-hat);
+        color: var(--div-text);
+        padding: 10px;
+        border: none;
+        font-size: 17pt;
+        font-family: 'Times New Roman', Times, serif;
+        text-decoration: none;
+
+        &:hover {
+            background-color: var(--button-illum);
+            cursor: pointer;
+        }
+    }
+
+    // логотип
+    #container-main-logo {
+        margin-left: 15px;
+
+        // для изображения
+        width: 180px;
+        aspect-ratio: 2/1;
+        display: flex; // Для правильного растягивания
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+    }
+
+    // кнокпа переключения темы
+    #container-night-theme-toggle {
+        margin-left: auto; // поместить вправо
+        background-color: var(--div-hat);
+        border-radius: 25px;
+        padding: 5px;
+        cursor: pointer;
+
+        // фото переключения темы
+        @include _imgs_no_border(4rem);
+
+
+        &:hover {
+            background-color: var(--button-illum);
+        }
+    }
+// #endregion Header
+
+// #region main
+    main {
+        margin: 2rem 3rem 2rem 3rem;
+    }
+
+    // страницы сайта
+    section {
+        // flex
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+// #endregion main
+
+// #region Footer
+    footer {
+        width: 100%;
+        background-color: var(--div-hat);
+        color: var(--div-text);
+
+        // flex
+        display: flex;
+        flex-direction: row;
+    }
+
+    // левая часть 
+    .footer-left {
+        width: 50%;
+        padding: 30px;
+        font-style: normal; // убрать italic для address
+
+        // контейнер который группирует текст
+        div {
+            // flex
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        // сделать цвет для каждого
+        p {
+            color: var(--div-text);
+        }
+
+        // выделить
+        strong {
+            font-style: italic;
+        }
+    }
+
+    // правая часть
+    .footer-right {
+        width: 50%;
+        padding: 30px;
+
+        // flex
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // разделительная линия
+    .footer-line-between {
+        border-left: 2px solid var(--div-text);
+        margin: 20px 0 20px 0;
+    }
+// #endregion Footer

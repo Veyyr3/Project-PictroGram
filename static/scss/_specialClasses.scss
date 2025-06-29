@@ -1,0 +1,537 @@
+// #region вспомогательные классы-----------------------------------------------------
+    // очистить всю анимацию
+    .clear-animation {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+
+    // #region отступы в REM---------------------------------------------------------------------
+        // #region margin-------
+            // отступы сверху--
+            .mt-sm {
+                margin-top: 0.6rem;
+            }
+
+            .mt,
+            .mt-md {
+                margin-top: 1rem;
+            }
+
+            .mt-lg {
+                margin-top: 1.75rem;
+            }
+            // --отступы сверху
+
+
+            // отступы снизу--
+            .mb-sm {
+                margin-bottom: 0.6rem;
+            }
+
+            .mb,
+            .mb-md {
+                margin-bottom: 1rem;
+            }
+
+            .mb-lg {
+                margin-bottom: 1.75rem;
+            }
+            // --отступы снизу
+
+
+            // отступы справа--
+            .mr-sm {
+                margin-right: 0.6rem;
+            }
+
+            .mr,
+            .mr-md {
+                margin-right: 1rem;
+            }
+
+            .mr-lg {
+                margin-right: 1.75rem;
+            }
+            // --отступы справа
+
+
+            // отступы слева--
+            .ml-sm {
+                margin-left: 0.6rem;
+            }
+
+            .ml,
+            .ml-md {
+                margin-left: 1rem;
+            }
+
+            .ml-lg {
+                margin-left: 1.75rem;
+            }
+            // --отступы слева
+
+
+            // отступы везде--
+            .m-sm {
+                margin: 0.6rem;
+            }
+
+            .m,
+            .m-md {
+                margin: 1rem;
+            }
+
+            .m-lg {
+                margin: 1.75rem;
+            }
+            // --отступы везде
+
+
+            // убрать отступы--
+            .mt-none {
+                margin-top: 0;
+            }
+
+            .mb-none {
+                margin-bottom: 0;
+            }
+
+            .mr-none {
+                margin-right: 0;
+            }
+
+            .ml-none {
+                margin-left: 0;
+            }
+
+            .m-none {
+                margin: 0;
+            }
+            // --убрать отступы
+        // #endregion margin-------
+
+
+        // #region padding-----
+            // отступы сверху--
+            .pt-sm {
+                padding-top: 0.6rem;
+            }
+
+            .pt,
+            .pt-md {
+                padding-top: 1rem;
+            }
+
+            .pt-lg {
+                padding-top: 1.75rem;
+            }
+            // --отступы сверху
+
+
+            // отступы снизу--
+            .pb-sm {
+                padding-bottom: 0.6rem;
+            }
+
+            .pb,
+            .pb-md {
+                padding-bottom: 1rem;
+            }
+
+            .pb-lg {
+                padding-bottom: 1.75rem;
+            }
+            // --отступы снизу
+
+
+            // отступы справа--
+            .pr-sm {
+                padding-right: 0.6rem;
+            }
+
+            .pr, .pr-md {
+                padding-right: 1rem;
+            }
+
+            .pr-lg {
+                padding-right: 1.75rem;
+            }
+            // --отступы справа
+
+
+            // отступы слева--
+            .pl-sm {
+                padding-left: 0.6rem;
+            }
+
+            .pl, .pl-md {
+                padding-left: 1rem;
+            }
+
+            .pl-lg {
+                padding-left: 1.75rem;
+            }
+            // --отсутупы слева
+
+
+            // отступы вокруг--
+            .p-vsm {
+                padding: 0.2rem;
+            }
+
+            .p-sm {
+                padding: 0.6rem;
+            }
+
+            .p,
+            .p-md {
+                padding: 1rem;
+            }
+
+            .p-lg {
+                padding: 1.75rem;
+            }
+            // --отступы вокруг
+
+
+            // убрать отсутпы--
+            .pt-none {
+                padding-top: 0;
+            }
+
+            .pb-none {
+                padding-bottom: 0;
+            }
+
+            .pr-none {
+                padding-right: 0;
+            }
+
+            .pl-none {
+                padding-left: 0;
+            }
+
+            .p-none {
+                padding: 0;
+            }
+            // --убрать отсутпы
+        // #endregion padding-----
+    // #endregion отступы в REM---------------------------------------------------------------------
+
+    // #region отступы в PX---------------------------------------------------------------------
+        // #region margin-------
+            // отступы сверху--
+            .mt-5px {
+                margin-top: 5px;
+            }
+
+            .mt-10px {
+                margin-top: 10px;
+            }
+
+            .mt-15px {
+                margin-top: 15px;
+            }
+
+            .mt-20px {
+                margin-top: 20px;
+            }
+
+            .mt-25px {
+                margin-top: 25px;
+            }
+
+            .mt-30px {
+                margin-top: 30px;
+            }
+            // --отступы сверху
+
+
+            // отступы снизу--
+            .mb-5px {
+                margin-bottom: 5px;
+            }
+
+            .mb-10px {
+                margin-bottom: 10px;
+            }
+
+            .mb-15px {
+                margin-bottom: 15px;
+            }
+
+            .mb-20px {
+                margin-bottom: 20px;
+            }
+
+            .mb-25px {
+                margin-bottom: 25px;
+            }
+
+            .mb-30px {
+                margin-bottom: 30px;
+            }
+            // --отступы снизу
+
+
+            // отступы справа--
+            .mr-5px {
+                margin-right: 5px;
+            }
+
+            .mr-10px {
+                margin-right: 10px;
+            }
+
+            .mr-15px {
+                margin-right: 15px;
+            }
+
+            .mr-20px {
+                margin-right: 20px;
+            }
+
+            .mr-25px {
+                margin-right: 25px;
+            }
+
+            .mr-30px {
+                margin-right: 30px;
+            }
+            // --отступы справа
+
+
+            // отступы слева--
+            .ml-5px {
+                margin-left: 5px;
+            }
+
+            .ml-10px {
+                margin-left: 10px;
+            }
+
+            .ml-15px {
+                margin-left: 15px;
+            }
+
+            .ml-20px {
+                margin-left: 20px;
+            }
+
+            .ml-25px {
+                margin-left: 25px;
+            }
+
+            .ml-30px {
+                margin-left: 30px;
+            }
+            // --отступы слева
+
+
+            // отступы везде--
+            .m-5px {
+                margin: 5px;
+            }
+
+            .m-10px {
+                margin: 10px;
+            }
+
+            .m-15px {
+                margin: 15px;
+            }
+
+            .m-20px {
+                margin: 20px;
+            }
+
+            .m-25px {
+                margin: 25px;
+            }
+
+            .m-30px {
+                margin: 30px;
+            }
+            // --отступы везде
+        // #endregion margin-------
+
+
+        // #region padding-----
+            // отступы сверху--
+            .pt-5px {
+                padding-top: 5px;
+            }
+
+            .pt-10px {
+                padding-top: 10px;
+            }
+
+            .pt-15px {
+                padding-top: 15px;
+            }
+
+            .pt-20px {
+                padding-top: 20px;
+            }
+
+            .pt-25px {
+                padding-top: 25px;
+            }
+
+            .pt-30px {
+                padding-top: 30px;
+            }
+            // --отступы сверху
+
+
+            // отступы снизу--
+            .pb-5px {
+                padding-bottom: 5px;
+            }
+
+            .pb-10px {
+                padding-bottom: 10px;
+            }
+
+            .pb-15px {
+                padding-bottom: 15px;
+            }
+
+            .pb-20px {
+                padding-bottom: 20px;
+            }
+
+            .pb-25px {
+                padding-bottom: 25px;
+            }
+
+            .pb-30px {
+                padding-bottom: 30px;
+            }
+            // --отступы снизу
+
+
+            // отступы справа--
+            .pr-5px {
+                padding-right: 5px;
+            }
+
+            .pr-10px {
+                padding-right: 10px;
+            }
+
+            .pr-15px {
+                padding-right: 15px;
+            }
+
+            .pr-20px {
+                padding-right: 20px;
+            }
+
+            .pr-25px {
+                padding-right: 25px;
+            }
+
+            .pr-30px {
+                padding-right: 30px;
+            }
+            // --отступы справа
+
+
+            // отступы слева--
+            .pl-5px {
+                padding-left: 5px;
+            }
+
+            .pl-10px {
+                padding-left: 10px;
+            }
+
+            .pl-15px {
+                padding-left: 15px;
+            }
+
+            .pl-20px {
+                padding-left: 20px;
+            }
+
+            .pl-25px {
+                padding-left: 25px;
+            }
+
+            .pl-30px {
+                padding-left: 30px;
+            }
+            // --отступы слева
+
+
+            // отступы вокруг--
+            .p-5px {
+                padding: 5px;
+            }
+
+            .p-10px {
+                padding: 10px;
+            }
+
+            .p-15px {
+                padding: 15px;
+            }
+
+            .p-20px {
+                padding: 20px;
+            }
+
+            .p-25px {
+                padding: 25px;
+            }
+
+            .p-30px {
+                padding: 30px;
+            }
+            // --отступы вокруг
+        // #endregion padding-----
+    // #endregion отступы в PX---------------------------------------------------------------------
+
+    // #region gap--------------------------------------------------------------------------
+        .gap-10px {
+            gap: 10px;
+        }
+
+        .gap-15px {
+            gap: 15px;
+        }
+
+        .gap-20px {
+            gap: 20px;
+        }
+    // #endregion gap-----------------------------------------------------------------------
+
+    // #region размер шрифта--------------------------------------------------------------------
+        .t-vsm {
+            font-size: 0.75rem; // 12px (очень маленький)
+        }
+
+
+        .t-sm {
+            font-size: 0.875rem; // 14px (маленький)
+        }
+
+
+        .t-md {
+            font-size: 1rem; // 16px (стандартный)
+        }
+
+
+        .t-lg {
+            font-size: 1.125rem; // 18px (крупный)
+        }
+
+
+        .t-vlg {
+            font-size: 1.25rem; // 20px (очень крупный)
+        }
+    // #endregion размер шрифта--------------------------------------------------------------------
+// #endregion вспомогательные классы-----------------------------------------------------
