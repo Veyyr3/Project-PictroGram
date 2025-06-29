@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.cache/
+.pytest_cache/
+htmlcov/
+.ipynb_checkpoints/
+
+# Django-specific
+media/         
+static_cdn/    
+*.sqlite3      
+local_settings.py 
+
+# Editors and IDEs
+Thumbs.db
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*~
+
+# Other
+dist/
+build/
+.env
+.prettierrc
