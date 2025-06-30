@@ -1,4 +1,26 @@
 // стили для index.html
+@use 'mixins' as *;
+
+// главный контейнер публикации
 .container-publication {
     width: 100%;
 }
+
+// #region Фото пользователя и имя пользователя
+    .container-short-user-info {
+
+        // flex
+        display: flex;
+        gap: 10px;
+    }
+
+    // фото пользователя
+    .container-user-avatar {
+        @include imgs(30%)
+    }
+
+    // имя пользователя
+    .user-name {
+
+    }
+// #endregion Фото пользователя и имя пользователя

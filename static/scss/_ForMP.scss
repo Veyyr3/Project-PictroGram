@@ -1,4 +1,5 @@
 // ForMP.scss
+@use 'mixins' as *;
 
 // адаптация под телефоны
 @media (min-width: 320px) and (max-width: 1000px) {

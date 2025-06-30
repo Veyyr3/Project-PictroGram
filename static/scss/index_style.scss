@@ -1,56 +1,16 @@
 @use 'specialComponents';
 @use 'specialClasses';
 @use 'ForMP';
-
+@use 'mixins' as *;
+ 
 // страницы
 @use 'ForIndex';
-
+  
 // index.scss
 /*---------------------------------VARIABLES---------------------------------*/
 $font-size: 20pt; // размер шрифта
 
-// #region mixins---------------------------------------------------------------------
-    // Миксин для картинок, изменяя их размер
-    @mixin _imgs ($width, $border-radius: 25px, $border-width: 1px, $color: black, $border-type: solid) {
-        // стили для контейнера
-        max-width: $width;
-        height: auto;
-        display: flex; // Для правильного растягивания
 
-        img {
-            width: 100%;
-            height: 100%;
-            border-radius: $border-radius;
-            border: $border-width $border-type $color;
-            object-fit: cover; // заполнить весь контейнер
-        }
-    }
-
-
-    // Миксин для картинок, изменяя их размер
-    @mixin _imgs_no_border ($width) {
-        max-width: $width;
-        height: auto;
-        display: flex; // Для правильного растягивания
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; // заполнить весь контейнер
-        }
-    }
-
-
-    // Миксин для анимации. При наведении увеличиваться
-    @mixin _animation_transform_scale($duration, $scale) {
-        transition: transform $duration ease;
-        will-change: transform; // оптимизация
-
-        &:hover {
-            transform: scale($scale);
-        }
-    }
-// #endregion mixins ---------------------------------------------------------------
 /*---------------------------------END VARIABLES---------------------------------*/
 /*---------------------------------TECHNICAL---------------------------------*/
 
@@ -246,7 +206,7 @@ body {
         cursor: pointer;
 
         // фото переключения темы
-        @include _imgs_no_border(4rem);
+        @include imgs_no_border(4rem);
 
 
         &:hover {

@@ -1,0 +1,42 @@
+// #region mixins---------------------------------------------------------------------
+    // Миксин для картинок, изменяя их размер
+    @mixin imgs ($width, $border-radius: 25px, $border-width: 1px, $color: black, $border-type: solid) {
+        // стили для контейнера
+        max-width: $width;
+        height: auto;
+        display: flex; // Для правильного растягивания
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: $border-radius;
+            border: $border-width $border-type $color;
+            object-fit: cover; // заполнить весь контейнер
+        }
+    }
+
+
+    // Миксин для картинок, изменяя их размер
+    @mixin imgs_no_border ($width) {
+        max-width: $width;
+        height: auto;
+        display: flex; // Для правильного растягивания
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; // заполнить весь контейнер
+        }
+    }
+
+
+    // Миксин для анимации. При наведении увеличиваться
+    @mixin animation_transform_scale($duration, $scale) {
+        transition: transform $duration ease;
+        will-change: transform; // оптимизация
+
+        &:hover {
+            transform: scale($scale);
+        }
+    }
+// #endregion mixins ---------------------------------------------------------------
