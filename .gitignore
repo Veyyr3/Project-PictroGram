@@ -33,6 +33,7 @@ Thumbs.db
 
 # css
 *.css.map
+static/css/css.txt
 
 # Other
 dist/

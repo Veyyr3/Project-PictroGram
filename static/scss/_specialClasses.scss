@@ -6,6 +6,12 @@
         animation: none !important;
     }
 
+    // для всех особых ссылок
+    .link {
+        text-decoration: none;
+        color: inherit;
+    }
+
 
     // #region отступы в REM---------------------------------------------------------------------
         // #region margin-------

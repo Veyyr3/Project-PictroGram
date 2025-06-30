@@ -19,6 +19,11 @@
   animation: none !important;
 }
 
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .mt-sm {
   margin-top: 0.6rem;
 }
@@ -545,6 +550,10 @@
     display: none;
   }
 }
+.container-publication {
+  width: 100%;
+}
+
 /*---------------------------------VARIABLES---------------------------------*/
 /*---------------------------------END VARIABLES---------------------------------*/
 /*---------------------------------TECHNICAL---------------------------------*/
