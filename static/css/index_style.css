@@ -13,11 +13,6 @@
   margin: 5px 3px 5px 8px;
 }
 
-.testing {
-  color: red !important;
-  background-color: blue !important;
-}
-
 .clear-animation {
   transition: none !important;
   transform: none !important;
@@ -608,16 +603,18 @@ ul:not(nav ul) li p, ol li p {
 }
 
 body {
-  --bg-color: #edfafa;
-  --main-text: #333333;
-  --div-text: #FFFFFF;
-  --button-illum: #8CB5FF;
-  --div-hat: #6495ED;
-  --div-bg: #E9E4E4;
-  --text-red: #FF0000;
-  --text-title: #FDA638;
-  --text-blue: #333399;
-  --container-line-aside-bg-color: #E0F2F7;
+  --bg-color: #2C2C2C;
+  --div-hat: #A3BED9;
+  --div-image-disc: #FFD2A6;
+  --div-image-title: #AAC6E3;
+  --bg-form-color: #E5FCFF;
+  --bg-alert: #FEB3B3;
+  --color-button-1: #F6ECEC;
+  --color-button-2: #FF9A9A;
+  --color-button-3: #A5FAAF;
+  --button-illum: #C4D6E8;
+  --text-white: #FFFFFF;
+  --text-black: #000000;
   background-color: var(--bg-color);
   transition: background-color 0.3s ease;
 }
@@ -626,28 +623,6 @@ body header, body footer {
 }
 body .isimage {
   filter: brightness(1);
-  transition: filter 0.3s ease;
-}
-
-.dark-theme {
-  --bg-color: #313030;
-  --main-text: #000000;
-  --div-text: #FFFFFF;
-  --button-illum: #4888FB;
-  --div-hat: #5E77A3;
-  --div-bg: #B5B1B1;
-  --text-red: #FF0000;
-  --text-title: #FF8E00;
-  --text-blue: #333399;
-  --container-line-aside-bg-color: #b9d0d6;
-  background-color: var(--bg-color);
-  transition: background-color 0.3s ease;
-}
-.dark-theme header, .dark-theme footer {
-  transition: background-color 0.3s ease;
-}
-.dark-theme .isimage {
-  filter: brightness(0.8);
   transition: filter 0.3s ease;
 }
 
