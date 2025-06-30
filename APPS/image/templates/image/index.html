@@ -7,17 +7,9 @@
     <article class="container-publication">
         {% comment %} шапка {% endcomment %}
         <header class="header-publication">
-            <!-- Фото пользователя и имя пользователя -->
-            <div class="container-short-user-info">
-                <!-- фото пользователя -->
-                <div class="container-user-avatar">
-                    <img class="isimage" src="" alt="">
-                </div>
+            <!-- фото и имя пользователя -->
+            {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
 
-                <!-- имя пользователя -->
-                <h4 class="user-name-h4">Имя пользователя</h4>
-            </div>
-            
             <!-- дата публикации -->
             <div class="container-publication-date">
                 <h4>Дата публикации: 12.12.12</h4>
@@ -65,16 +57,8 @@
             <article class="container-comment">
                 <!-- шапка комментария -->
                 <header>
-                    <!-- Фото пользователя и имя пользователя -->
-                    <div class="container-short-user-info">
-                        <!-- фото пользователя -->
-                        <div class="container-user-avatar">
-                            <img class="isimage" src="" alt="">
-                        </div>
-
-                        <!-- имя пользователя -->
-                        <h4 class="user-name-h4">Имя пользователя</h4>
-                    </div>
+                    <!-- фото и имя пользователя -->
+                    {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
 
                     <!-- дата публикации -->
                     <div class="container-publication-date-comment">

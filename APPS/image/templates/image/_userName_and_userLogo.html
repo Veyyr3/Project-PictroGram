@@ -1,0 +1,15 @@
+{% load static %}
+{% comment %} TODO поменять фото пользователя {% endcomment %}
+
+<a class="link" href="{{ link_to_user }}">
+    <!-- Фото пользователя и имя пользователя -->
+    <div class="container-short-user-info">
+        <!-- фото пользователя -->
+        <div class="container-user-avatar">
+            <img class="isimage" src="{% static 'page_pictures/test_logo.jpg' %}" alt="">
+        </div>
+
+        <!-- имя пользователя -->
+        <h4 class="user-name-h4">{{ user_name }}</h4>
+    </div>
+</a>
