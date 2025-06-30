@@ -16,24 +16,14 @@
     {% include 'image/_header.html' %}
         
 
-    <!-- мэин и эсайд -->
-    <div id="container-main-aside">
-        <!-- мэин-->
-        <main>
-           {% block content %}
-            
-           {% endblock content %}
-        </main>
-        <!-- КОНЕЦ мэин-->
-
-
-        <!-- эсайд -->
-        <aside aria-label="Боковая панель">
-           
-        </aside>
-        <!-- КОНЕЦ эсайд -->
-    </div>
-    <!-- КОНЕЦ мэин и эсайд -->
+    <!-- мэин-->
+    <main class="gap-20px">
+        {% block content %}
+        
+        {% endblock content %}
+    </main>
+    <!-- КОНЕЦ мэин-->
+   
 
     {% comment %} footer {% endcomment %}
     {% include 'image/_footer.html' %}

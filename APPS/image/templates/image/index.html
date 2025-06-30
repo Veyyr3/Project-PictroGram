@@ -3,8 +3,101 @@
 
 
 {% block content %}
-    <div class="testing">
-        <p>123</p>
-    </div>
+    {% comment %} главный контейнер с фото и комментариями {% endcomment %}
+    <article class="container-publication">
+        {% comment %} шапка {% endcomment %}
+        <header class="header-publication">
+            <!-- Фото пользователя и имя пользователя -->
+            <div class="container-short-user-info">
+                <!-- фото пользователя -->
+                <div class="container-user-avatar">
+                    <img class="isimage" src="" alt="">
+                </div>
+
+                <!-- имя пользователя -->
+                <h4 class="user-name-h4">Имя пользователя</h4>
+            </div>
+            
+            <!-- дата публикации -->
+            <div class="container-publication-date">
+                <h4>Дата публикации: 12.12.12</h4>
+            </div>
+        </header>
+        {% comment %} КОНЕЦ шапка {% endcomment %}
+
+
+        <!-- фото -->
+        <div class="container-img">
+            <img class="isimage" src="" alt="">
+        </div>
+
+
+        {% comment %} заголовок фото {% endcomment %}
+        <div class="container-title-publication">
+            <!-- лайки -->
+            <div class="container-like">
+                <a href="#" class="button-like">
+                    <img class="isimage" src="" alt="">
+                </a>
+
+                <p>число лайков</p>
+            </div>
+
+            <!-- заголовок -->
+            <h3>заголовок фото</h3>
+        </div>
+        {% comment %} КОНЕЦ заголовок фото {% endcomment %}
+
+
+        {% comment %} Описание фото {% endcomment %}
+        <div class="container-publication-disc">
+            <h3>Описание фото</h3>
+            <p>Текст фото</p>
+        </div>
+        {% comment %} КОНЕЦ Описание фото {% endcomment %}
+
+
+        {% comment %} Комментарии {% endcomment %}
+        <section class="container-comments-section">
+            <h3><b>Комментарии:</b></h3>
+            
+            <!-- сами комментарий -->
+            <article class="container-comment">
+                <!-- шапка комментария -->
+                <header>
+                    <!-- Фото пользователя и имя пользователя -->
+                    <div class="container-short-user-info">
+                        <!-- фото пользователя -->
+                        <div class="container-user-avatar">
+                            <img class="isimage" src="" alt="">
+                        </div>
+
+                        <!-- имя пользователя -->
+                        <h4 class="user-name-h4">Имя пользователя</h4>
+                    </div>
+
+                    <!-- дата публикации -->
+                    <div class="container-publication-date-comment">
+                        <h4>Дата публикации: 12.12.12</h4>
+                    </div>
+                </header>
+                
+                <!-- текст комментария -->
+                <p>текст комментария</p>
+            </article>
+
+            <!-- добавить комментарий -->
+            <a href="#" class="link">
+                <div class="container-add-publication">
+                    <h1>+</h1>
+                    <p>Добавить комментарий</p>
+                </div>
+            </a>
+        </section>
+        {% comment %} КОНЕЦ Комментарии {% endcomment %}
+    </article>
+    {% comment %} КОНЕЦ главный контейнер с фото и комментариями {% endcomment %}
+
+
 {% endblock content %}
     

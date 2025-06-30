@@ -123,6 +123,7 @@ ul:not(nav ul), ol {
 // светлая тема
 body {
     --bg-color: #2C2C2C; //фон
+    --div-main: #D9D9D9; // главный блок
     --div-hat: #A3BED9; //хидер/футер/шапки блоков
     --div-image-disc: #FFD2A6; // блок описание фото
     --div-image-title: #AAC6E3; // блок подпись для фото
@@ -225,7 +226,6 @@ body {
 
         // для изображения
         width: 180px;
-        aspect-ratio: 2/1;
         display: flex; // Для правильного растягивания
 
         img {
@@ -256,6 +256,13 @@ body {
 // #region main
     main {
         margin: 2rem 3rem 2rem 3rem;
+        background-color: var(--div-main);
+        border-radius: 25px;
+
+        // flex
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     // страницы сайта
