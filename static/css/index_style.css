@@ -665,7 +665,7 @@ header {
 
 .nav_button {
   background-color: var(--div-hat);
-  color: var(--div-text);
+  color: var(--text-white);
   padding: 10px;
   border: none;
   font-size: 17pt;

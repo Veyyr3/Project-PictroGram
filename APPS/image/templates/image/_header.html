@@ -1,10 +1,12 @@
+{% load static %}
+
 <!-- HEADER -->
 <header>
     <!--  верхний блок  -->
     <div id="header-top">
         <!--  логотип  -->
         <div id="container-main-logo">
-            <img class="isimage" src={logo} alt="Логотип ЦДЮ" />
+            <img class="isimage" src="{% static 'page_pictures/PictroGram_logo.jpg' %}" alt="Логотип ЦДЮ" />
         </div>
 
         <!--  кнопка для бургер меню (Для телефонов)  -->
