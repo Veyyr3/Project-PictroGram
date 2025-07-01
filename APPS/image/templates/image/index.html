@@ -1,4 +1,5 @@
 {% extends 'image/base.html' %}
+{% load static %}
 {% comment %} image/index.html {% endcomment %}
 
 
@@ -20,7 +21,7 @@
 
         <!-- фото -->
         <div class="container-img">
-            <img class="isimage" src="" alt="">
+            <img class="isimage" src="{% static 'page_pictures/test.jpg' %}" alt="">
         </div>
 
 
@@ -29,14 +30,18 @@
             <!-- лайки -->
             <div class="container-like">
                 <a href="#" class="button-like">
-                    <img class="isimage" src="" alt="">
+                    <img class="isimage" src="{% static 'page_pictures/page decorations/heart.png' %}" alt="">
                 </a>
 
-                <p>число лайков</p>
+                <div>
+                    <p>число лайков</p>
+                </div>
             </div>
 
             <!-- заголовок -->
-            <h3>заголовок фото</h3>
+            <div class="container-title">
+                <h3>заголовок фото</h3>
+            </div>
         </div>
         {% comment %} КОНЕЦ заголовок фото {% endcomment %}
 

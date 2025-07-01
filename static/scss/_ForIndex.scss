@@ -1,16 +1,11 @@
 // стили для index.html
 @use './mixins' as *;
 
-// главный контейнер публикации
-.container-publication {
-    width: 100%;
-}
-
 // #region Фото пользователя и имя пользователя
     .container-short-user-info {
-
         // flex
         display: flex;
+        flex-direction: row;
         gap: 10px;
     }
 
@@ -28,7 +23,6 @@
             width: 100%;
             height: 100%;
             border-radius: 100%;
-            // object-fit: cover; // заполнить весь контейнер
         }
     }
 
@@ -37,3 +31,59 @@
 
     }
 // #endregion Фото пользователя и имя пользователя
+
+// #region главный контейнер с фото и комментариями
+    .container-publication {
+        width: 100%;
+    }
+
+    // шапка
+    .header-publication {
+        width: 100%;
+
+        // flex
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    // заголовок фото
+    .container-title-publication {
+        position: relative;
+        width: 100%;
+        background-color: var(--div-image-title);
+
+        // flex
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        // див с заголовком
+        .container-title {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    // лайк и его число
+    .container-like {
+        position: absolute;
+        margin-left: 0;
+
+        // flex
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    // кнопка лайка (ссылка)
+    .button-like {
+        max-width: 60px;
+        height: auto;
+        display: flex; // Для правильного растягивания
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+// #endregion главный контейнер с фото и комментариями

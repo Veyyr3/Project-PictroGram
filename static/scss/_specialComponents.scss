@@ -35,3 +35,16 @@
         margin: $right-line-margin-top $right-line-margin-right $right-line-margin-bottom $right-line-margin-left;
     }
 }
+
+// контейнер 1 фото
+.container-img {
+    // стили для контейнера
+    width: 100%;
+    height: auto;
+    display: flex; // Для правильного растягивания
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
