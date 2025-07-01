@@ -1,12 +1,12 @@
-@use 'specialComponents';
-@use 'specialClasses';
-@use 'ForMP';
-@use 'mixins' as *;
+@use './specialComponents';
+@use './specialClasses';
+@use './ForMP';
+@use './mixins' as *;
  
 // страницы
-@use 'ForIndex';
+@use './ForIndex';
   
-// index.scss
+// index.scss 
 /*---------------------------------VARIABLES---------------------------------*/
 $font-size: 20pt; // размер шрифта
 
