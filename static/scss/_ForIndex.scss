@@ -32,9 +32,10 @@
     }
 // #endregion Фото пользователя и имя пользователя
 
-// #region главный контейнер с фото и комментариями
+// #region главный контейнер публикации
     .container-publication {
         width: 100%;
+        color: var(--text-white);
     }
 
     // шапка
@@ -86,4 +87,48 @@
             height: 100%;
         }
     }
-// #endregion главный контейнер с фото и комментариями
+
+    // Описание фото
+    .container-publication-disc {
+        background-color: var(--div-image-disc);
+        padding: 1rem;
+    }
+// #endregion главный контейнер публикации
+
+// #region главный контейнер комменариев
+    .container-comments-section {
+        padding: 1rem 2rem 1rem 2rem;
+        background-color: white;
+
+        // для заголовка
+        h4 {
+            color: var(--text-black);
+        }
+    }
+
+    // контейнер самого комментария
+    .container-comment {
+        width: 100%;
+        border-radius: 25px;
+        border: 1px solid black;
+        background-color: var(--bg-form-color);
+        padding: 1rem;
+
+        // шапка комментария
+        header {
+            background-color: var(--bg-form-color);
+            border-radius: inherit; // чтобы углы у него тоже были круглые, иначе баг
+            width: 100%;
+
+            // flex
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    // контент комменатрия
+    .container-comment-content {
+        padding: inherit;
+        color: var(--text-black);
+    }
+// #endregion главный контейнер комменариев

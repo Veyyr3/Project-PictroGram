@@ -581,6 +581,7 @@
 
 .container-publication {
   width: 100%;
+  color: var(--text-white);
 }
 
 .header-publication {
@@ -618,6 +619,39 @@
 .button-like img {
   width: 100%;
   height: 100%;
+}
+
+.container-publication-disc {
+  background-color: var(--div-image-disc);
+  padding: 1rem;
+}
+
+.container-comments-section {
+  padding: 1rem 2rem 1rem 2rem;
+  background-color: white;
+}
+.container-comments-section h4 {
+  color: var(--text-black);
+}
+
+.container-comment {
+  width: 100%;
+  border-radius: 25px;
+  border: 1px solid black;
+  background-color: var(--bg-form-color);
+  padding: 1rem;
+}
+.container-comment header {
+  background-color: var(--bg-form-color);
+  border-radius: inherit;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container-comment-content {
+  padding: inherit;
+  color: var(--text-black);
 }
 
 /*---------------------------------VARIABLES---------------------------------*/
