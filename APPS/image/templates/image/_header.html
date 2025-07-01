@@ -5,7 +5,7 @@
     <!--  верхний блок  -->
     <div id="header-top">
         <!--  логотип  -->
-        <a href="#">
+        <a href="{% url 'image:index' %}">
             <div id="container-main-logo">
                 <img class="isimage" src="{% static 'page_pictures/PictroGram_logo.jpg' %}" alt="Логотип ЦДЮ" />
             </div>
@@ -20,7 +20,7 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="#" class="nav_button">
+                        <a href="{% url 'image:add_publication' %}" class="nav_button">
                             Создать публикацию
                         </a>
                     </li>

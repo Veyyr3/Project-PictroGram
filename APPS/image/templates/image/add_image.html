@@ -1,0 +1,16 @@
+{% extends 'image/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <section class="container-add-publication">
+        <h2>Добавить публикацию</h2>
+
+        <div class="container-img">
+            <img src="{% static 'page_pictures/test.jpg' %}" alt="">
+        </div>
+
+        <!-- добавить фото -->
+        <input type="file">
+    </section>
+{% endblock content %}

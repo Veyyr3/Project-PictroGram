@@ -5,12 +5,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 # импорт контроллеров
-from APPS.image.views import index
+from APPS.image.views import index # главная страница
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    # path('products/', include('products.urls', namespace='products')),
+    # path('', index, name='index'),
+    path('', include('image.urls', namespace='image')),
     # path('users/', include('users.urls', namespace='users'))
 ]
 
