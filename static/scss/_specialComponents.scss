@@ -48,3 +48,31 @@
         height: 100%;
     }
 }
+
+// добавить публикацию со знаменитым плюсиком по центру
+.container-add-publication {
+    width: 100%;
+    color: black;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding-bottom: 1rem;
+    
+    // flex
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    // контейнер со знаменитым плюсиком по центру
+    .special-container-add-publication-plus {
+        p {
+            font-size: 100px;
+            font-weight: bold;
+        }
+    }
+
+    // подпись под плюсиком
+    .special-container-add-publication-title {
+
+    }
+}

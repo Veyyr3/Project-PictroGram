@@ -51,6 +51,7 @@
     .container-title-publication {
         position: relative;
         width: 100%;
+        padding: 1rem 1rem;
         background-color: var(--div-image-title);
 
         // flex
@@ -92,12 +93,17 @@
     .container-publication-disc {
         background-color: var(--div-image-disc);
         padding: 1rem;
+
+        // текст описания
+        p {
+            margin-top: 1rem;
+        }
     }
 // #endregion главный контейнер публикации
 
 // #region главный контейнер комменариев
     .container-comments-section {
-        padding: 1rem 2rem 1rem 2rem;
+        padding: 1rem 2rem 2rem 2rem;
         background-color: white;
 
         // для заголовка
