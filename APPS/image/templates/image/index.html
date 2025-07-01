@@ -79,7 +79,7 @@
             <!-- КОНЕЦ сам комментарий -->
 
             <!-- добавить комментарий -->
-            <div id="add_comment" class="container-add-publication">
+            <div id="add_comment_button" class="container-add-publication">
                 <div class="special-container-add-publication-plus">
                     <p>+</p>
                 </div>
@@ -92,6 +92,25 @@
     </article>
     {% comment %} КОНЕЦ главный контейнер с фото и комментариями {% endcomment %}
 
-
+    {% comment %} Модальное окно {% endcomment %}
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form class="comment-form" action="">
+                <!-- заголовок и поля для заполнения комментария -->
+                <div class="container-publication-disc comment-add">
+                    <label for="comment_content"><h4>Комментарий:</h4></label>
+                    <textarea name="comment_content" id="comment_content" rows="10"></textarea>
+                </div>
+                <button class="button-green-confirm">Добавить</button>
+            </form>
+        </div>
+    </div>
+    {% comment %} КОНЕЦ Модальное окно {% endcomment %}
 {% endblock content %}
+    
+
+{% block js %}
+    <script src="{% static 'js/open_comments.js' %}"></script>
+{% endblock js %}
     

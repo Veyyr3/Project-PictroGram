@@ -13,21 +13,12 @@
   margin: 5px 3px 5px 8px;
 }
 
-.container-img {
-  width: 100%;
-  height: auto;
-  display: flex;
-}
-.container-img img {
-  width: 100%;
-  height: 100%;
-}
-
 .container-add-publication {
   width: 100%;
   color: black;
   border-radius: 25px;
   border: 1px solid black;
+  cursor: pointer;
   padding-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -38,6 +29,30 @@
   font-size: 100px;
   font-weight: bold;
 }
+.container-img {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+.container-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.button-green-confirm {
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-left: auto;
+}
+.button-green-confirm:hover {
+  background-color: #218838;
+}
+
 .clear-animation {
   transition: none !important;
   transform: none !important;
@@ -638,6 +653,7 @@
 }
 
 .container-publication-disc {
+  width: 100%;
   background-color: var(--div-image-disc);
   padding: 1rem;
 }
@@ -734,7 +750,7 @@ body {
   --bg-color: #2C2C2C;
   --div-main: #D9D9D9;
   --div-hat: #A3BED9;
-  --div-image-disc: #FFD2A6;
+  --div-image-disc: #f1bf8e;
   --div-image-title: #AAC6E3;
   --bg-form-color: #E5FCFF;
   --bg-alert: #FEB3B3;
@@ -889,6 +905,68 @@ footer {
 .footer-line-between {
   border-left: 2px solid var(--div-text);
   margin: 20px 0 20px 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close-button {
+  color: #f0ecec;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  cursor: pointer;
+  background-color: #c5aeae;
+  padding: 5px 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+.close-button:hover, .close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-add {
+  color: var(--text-white);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.comment-add textarea {
+  resize: none;
 }
 
 /*# sourceMappingURL=index_style.css.map */
