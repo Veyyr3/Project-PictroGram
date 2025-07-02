@@ -30,7 +30,7 @@ INSTALLED_APPS = [
 
     # 'sass_processor', # SCSS
 
-    # 'APPS.user.apps.UserConfig',
+    'APPS.users.apps.UserConfig',
     'APPS.image.apps.ImageConfig',
 ]
 
