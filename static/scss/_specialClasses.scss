@@ -16,6 +16,10 @@
         .width-100 {
             width: 100%;
         }
+
+        .color-inherit {
+            color: inherit;
+        }
     // #endregion END simple
 
 
@@ -506,6 +510,41 @@
             // --отступы вокруг
         // #endregion padding-----
     // #endregion отступы в PX---------------------------------------------------------------------
+
+    // #region отступы специальные
+        .to-right {
+            margin-left: auto;
+        }
+
+        .to-left {
+            margin-right: auto;
+        }
+
+        .to-top {
+            margin-bottom: auto;
+        }
+
+        .to-bot {
+            margin-top: auto;
+        }
+
+        // важные
+        .to-right-im {
+            margin-left: auto !important;
+        }
+
+        .to-left-im {
+            margin-right: auto !important;
+        }
+
+        .to-top-im {
+            margin-bottom: auto !important;
+        }
+
+        .to-bot-im {
+            margin-top: auto !important;
+        }
+    // #endregion отступы специальные
 
     // #region gap--------------------------------------------------------------------------
         .gap-10px {

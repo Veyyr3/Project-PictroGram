@@ -1,0 +1,78 @@
+{% extends 'image/base.html' %}
+{% load static %}
+
+{% block content %}
+    <main class="gap-10px main-profile">
+        {% comment %} Секция профиля {% endcomment %}
+        <section class="width-100 flex-column align-items-center">
+            <div style="width: 100%; text-align: left;">
+                <h3>Профиль</h3>
+            </div>
+
+            {% comment %} Сам профиль  {% endcomment %}
+            <div class="flex-column gap-10px">
+                <!-- информация о профиле -->
+                <div class="container-info-profile">
+                    <!-- аватар -->
+                    <div>
+                        <!-- загруженное фото -->
+                        <div class="container-img container-add-new-img-user-logo">
+                            <img id="imagePreview" src="{% static 'page_pictures/page decorations/test_logo.jpg' %}" alt="Предварительный просмотр фото">
+                        </div>
+                    </div>
+
+                    <!-- имя, описание о себе -->
+                    <div class="flex-column jstf-cnt-sp-btw">
+                        <div class="flex-column">
+                            <!-- имя пользователя -->
+                            <h4>Имя пользователя:</h4>
+                            <p>Здесь будет какое-то имя</p>
+                        </div>
+                        
+                        <div class="flex-column">
+                            <!-- о себе -->
+                            <h4>О себе:</h4>
+                            <p>Здесь описание</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Подписаться-->
+                <div class="flex jstf-cnt-sp-btw width-100 align-items-center">
+                    <a class="button-green-confirm link to-left" href="#">Подписаться</a>
+                </div>
+            </div>
+            {% comment %} КОНЕЦ поменять информацию о профиле  {% endcomment %}
+
+
+            {% comment %} Публикации {% endcomment %}
+            <section>
+                <div style="width: 100%; text-align: left;">
+                    <h3>Публикации</h3>
+                </div>
+
+                <!-- Сами публикации -->
+                <article class="container-publication">
+                    {% comment %} шапка {% endcomment %}
+                    <header class="header-publication">
+                        <!-- фото и имя пользователя -->
+                        {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
+
+                        <!-- дата публикации -->
+                        <div class="container-publication-date">
+                            <h4>Дата публикации: 12.12.12</h4>
+                        </div>
+                    </header>
+                    {% comment %} КОНЕЦ шапка {% endcomment %}
+
+                    {% comment %} место для фото {% endcomment %}
+                    {% include 'image/_any_publication.html' with like_link='#' number_likes='число лайков' image_title='заголовок фото' image_disc='это Описание фото' %}
+                </article>
+                <!-- КОНЕЦ Сами публикации -->
+            </section>
+            {% comment %} КОНЕЦ Публикации {% endcomment %}
+        </section>
+        {% comment %} КОНЕЦ Секция профиля {% endcomment %}
+    </main>
+{% endblock content %}
+    

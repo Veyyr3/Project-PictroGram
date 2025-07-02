@@ -52,7 +52,6 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 15px;
-  margin-left: auto;
 }
 .button-green-confirm:hover {
   background-color: #218838;
@@ -71,6 +70,10 @@
 
 .width-100 {
   width: 100%;
+}
+
+.color-inherit {
+  color: inherit;
 }
 
 .mt-sm {
@@ -483,6 +486,38 @@
 
 .p-30px {
   padding: 30px;
+}
+
+.to-right {
+  margin-left: auto;
+}
+
+.to-left {
+  margin-right: auto;
+}
+
+.to-top {
+  margin-bottom: auto;
+}
+
+.to-bot {
+  margin-top: auto;
+}
+
+.to-right-im {
+  margin-left: auto !important;
+}
+
+.to-left-im {
+  margin-right: auto !important;
+}
+
+.to-top-im {
+  margin-bottom: auto !important;
+}
+
+.to-bot-im {
+  margin-top: auto !important;
 }
 
 .gap-10px {
