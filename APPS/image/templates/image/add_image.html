@@ -10,20 +10,19 @@
         </div>
 
         <form class="form gap-10px" action="">
-            <div>
-
-            </div>
             <!-- загруженное фото -->
             <div class="container-img container-add-new-img">
-                <img src="" alt="">
+                <img id="imagePreview" src="{% static 'page_pictures/page decorations/img-for-upload.jpg' %}" alt="Предварительный просмотр фото">
             </div>
 
             <!-- добавить фото -->
-            <input type="file">
+            <input class="button-green-confirm" type="file" id="imageUploadInput" accept="image/*">
+
 
             <!-- название публикации -->
             <label for="publication-name"><h4>Название публикации:</h4></label>
             <input type="text" name="publication-name" id="publication-name" maxlength="30">
+
 
             <!-- Описание публикации -->
             <label for="publication-disc"><h4>Описание публикации:</h4></label>
@@ -34,3 +33,9 @@
     </section>
 </main>
 {% endblock content %}
+
+
+{% block js %}
+<script src="{% static 'js/upload_img.js' %}"></script>
+{% endblock js %}
+    

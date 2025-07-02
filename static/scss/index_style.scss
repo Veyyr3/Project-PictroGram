@@ -365,6 +365,8 @@ body {
 // #region формы
     // Форма добавить комментарий
     .form {
+        width: 100%;
+
         // flex
         display: flex;
         flex-direction: column;
