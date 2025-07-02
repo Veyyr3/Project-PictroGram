@@ -10,32 +10,39 @@
             </div>
 
             {% comment %} поменять информацию о профиле  {% endcomment %}
-            <form class="container-info-profile" action="">
-                <!-- сменить аватар -->
-                <div>
-                    <!-- загруженное фото -->
-                    <div class="container-img container-add-new-img-user-logo">
-                        <img id="imagePreview" src="{% static 'page_pictures/page decorations/img-for-upload.jpg' %}" alt="Предварительный просмотр фото">
+            <form class="flex-column gap-10px" action="">
+                <!-- поменять профиль -->
+                <div class="container-info-profile">
+                    <!-- сменить аватар -->
+                    <div>
+                        <!-- загруженное фото -->
+                        <div class="container-img container-add-new-img-user-logo">
+                            <img id="imagePreview" src="{% static 'page_pictures/page decorations/img-for-upload.jpg' %}" alt="Предварительный просмотр фото">
+                        </div>
                     </div>
 
-                    <!-- добавить фото -->
-                    <input class="button-green-confirm" type="file" id="imageUploadInput" accept="image/*">
+                    <!-- поменять имя, описание о себе -->
+                    <div class="flex-column jstf-cnt-sp-btw">
+                        <div class="form">
+                            <!-- имя пользователя -->
+                            <label for="publication-name"><h4>Имя пользователя:</h4></label>
+                            <input type="text" name="publication-name" id="publication-name" maxlength="30">
+                        </div>
+                        
+                        <div class="form">
+                            <!-- Расскажите о себе -->
+                            <label for="publication-disc"><h4>Расскажите о себе:</h4></label>
+                            <textarea style="resize: none;" name="publication-disc" id="publication-disc" rows="10"></textarea>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- поменять имя, описание о себе -->
-                <div class="form gap-10px">
-                    <!-- имя пользователя -->
-                    <label for="publication-name"><h4>Имя пользователя:</h4></label>
-                    <input type="text" name="publication-name" id="publication-name" maxlength="30">
-
-
-                    <!-- Расскажите о себе -->
-                    <label for="publication-disc"><h4>Расскажите о себе:</h4></label>
-                    <textarea style="resize: none;" name="publication-disc" id="publication-disc" rows="10"></textarea>
-
+                <!-- подтвердить изменения -->
+                <div class="flex jstf-cnt-sp-btw width-100 align-items-center">
+                    <!-- добавить фото -->
+                    <input class="" type="file" id="imageUploadInput" accept="image/*">
                     <button class="button-green-confirm" type="submit">Обновить профиль</button>
                 </div>
-
             </form>
             {% comment %} КОНЕЦ поменять информацию о профиле  {% endcomment %}
 

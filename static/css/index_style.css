@@ -531,11 +531,11 @@
   align-items: center;
 }
 
-.justify-content-center {
+.jstf-cnt-center {
   justify-content: center;
 }
 
-.justify-content-space-btw {
+.jstf-cnt-sp-btw {
   justify-content: space-between;
 }
 
@@ -744,6 +744,7 @@
 .container-add-new-img-user-logo {
   width: 100%;
   aspect-ratio: 1/1;
+  border: 1px solid #000;
 }
 
 /*---------------------------------VARIABLES---------------------------------*/
