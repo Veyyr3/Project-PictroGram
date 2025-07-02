@@ -8,8 +8,48 @@
                 <h3>Добавить публикацию</h3>
             </div>
 
+            {% comment %} поменять информацию о профиле  {% endcomment %}
+            <form class="container-info-profile" action="">
+                <!-- сменить аватар -->
+                <div>
+                    <!-- загруженное фото -->
+                    <div class="container-img container-add-new-img-user-logo">
+                        <img id="imagePreview" src="{% static 'page_pictures/page decorations/img-for-upload.jpg' %}" alt="Предварительный просмотр фото">
+                    </div>
+
+                    <!-- добавить фото -->
+                    <input class="button-green-confirm" type="file" id="imageUploadInput" accept="image/*">
+                </div>
+
+                <!-- поменять имя, описание о себе -->
+                <div>
+                    <!-- имя пользователя -->
+                    <label for="publication-name"><h4>Имя пользователя:</h4></label>
+                    <input type="text" name="publication-name" id="publication-name" maxlength="30">
+
+
+                    <!-- Расскажите о себе -->
+                    <label for="publication-disc"><h4>Расскажите о себе:</h4></label>
+                    <textarea style="resize: none;" name="publication-disc" id="publication-disc" rows="10"></textarea>
+                </div>
+
+                <button class="button-green-confirm" type="submit">Обновить профиль</button>
+            </form>
+            {% comment %} КОНЕЦ поменять информацию о профиле  {% endcomment %}
+
+            {% comment %} Публикации {% endcomment %}
+            <div style="width: 100%; text-align: left;">
+                <h3>Ваши Публикации</h3>
+            </div>
+
             
+            {% comment %} КОНЕЦ Публикации {% endcomment %}
         </section>
     </main>
 {% endblock content %}
+    
+
+{% block js %}
+<script src="{% static 'js/upload_img.js' %}"></script>
+{% endblock js %}
     
