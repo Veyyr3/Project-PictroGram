@@ -12,6 +12,12 @@
         color: inherit;
     }
 
+    // #region simple
+        .width-100 {
+            width: 100%;
+        }
+    // #endregion END simple
+
 
     // #region отступы в REM---------------------------------------------------------------------
         // #region margin-------
@@ -540,4 +546,28 @@
             font-size: 1.25rem; // 20px (очень крупный)
         }
     // #endregion размер шрифта--------------------------------------------------------------------
+
+    // #region flex
+        .flex {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+        
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .justify-content-space-btw {
+            justify-content: space-between;
+        }
+    // #endregion END flex
 // #endregion вспомогательные классы-----------------------------------------------------
