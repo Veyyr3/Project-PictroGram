@@ -3,6 +3,7 @@
 
 
 {% block content %}
+<main class="gap-20px main-add-new-publication">
     <section class="section-add-new-publication">
         <div style="width: 100%; text-align: left;">
             <h3>Добавить публикацию</h3>
@@ -19,6 +20,17 @@
 
             <!-- добавить фото -->
             <input type="file">
+
+            <!-- название публикации -->
+            <label for="publication-name"><h4>Название публикации:</h4></label>
+            <input type="text" name="publication-name" id="publication-name" maxlength="30">
+
+            <!-- Описание публикации -->
+            <label for="publication-disc"><h4>Описание публикации:</h4></label>
+            <textarea style="resize: none;" name="publication-disc" id="publication-disc" rows="10"></textarea>
+
+            <button class="button-green-confirm" type="submit">Добавить публикацию</button>
         </form>
     </section>
+</main>
 {% endblock content %}

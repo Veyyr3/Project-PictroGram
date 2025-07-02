@@ -368,6 +368,10 @@ body {
         // flex
         display: flex;
         flex-direction: column;
+
+        input, textarea {
+            padding: 8px;
+        }
     }
 
     // заголовок и поля для заполнения комментария

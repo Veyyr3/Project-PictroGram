@@ -693,6 +693,10 @@
   color: var(--text-black);
 }
 
+.main-add-new-publication {
+  padding: 2rem 6rem 2rem 6rem;
+}
+
 .section-add-new-publication {
   width: 100%;
   display: flex;
@@ -974,6 +978,9 @@ footer {
 .form {
   display: flex;
   flex-direction: column;
+}
+.form input, .form textarea {
+  padding: 8px;
 }
 
 .comment-add {
