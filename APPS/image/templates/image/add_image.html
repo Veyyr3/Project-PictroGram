@@ -3,14 +3,22 @@
 
 
 {% block content %}
-    <section class="container-add-publication">
-        <h2>Добавить публикацию</h2>
-
-        <div class="container-img">
-            <img src="{% static 'page_pictures/test.jpg' %}" alt="">
+    <section class="section-add-new-publication">
+        <div style="width: 100%; text-align: left;">
+            <h3>Добавить публикацию</h3>
         </div>
 
-        <!-- добавить фото -->
-        <input type="file">
+        <form class="form gap-10px" action="">
+            <div>
+
+            </div>
+            <!-- загруженное фото -->
+            <div class="container-img container-add-new-img">
+                <img src="" alt="">
+            </div>
+
+            <!-- добавить фото -->
+            <input type="file">
+        </form>
     </section>
 {% endblock content %}

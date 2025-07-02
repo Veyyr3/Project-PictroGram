@@ -1,6 +1,11 @@
 // стили для index.html
 @use './mixins' as *;
 
+// мэин индекса
+.main-index {
+    padding: 4rem 8rem 4rem 8rem;
+}
+
 // #region Фото пользователя и имя пользователя
     .container-short-user-info {
         // flex

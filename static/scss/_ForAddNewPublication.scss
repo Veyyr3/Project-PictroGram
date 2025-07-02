@@ -1,0 +1,17 @@
+
+// секция добавления нового фото
+.section-add-new-publication {
+    width: 100%;
+
+    // flex
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// контейнер где располагается новое фото
+.container-add-new-img {
+    width: 1000px;
+    height: 600px;
+    border: 1px solid #000;
+}

@@ -4,6 +4,7 @@
 
 
 {% block content %}
+<main class="gap-20px main-index">
     {% comment %} главный контейнер с фото и комментариями {% endcomment %}
     <article class="container-publication">
         {% comment %} шапка {% endcomment %}
@@ -96,7 +97,7 @@
     <div id="commentModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <form class="comment-form" action="">
+            <form class="form" action="">
                 <!-- заголовок и поля для заполнения комментария -->
                 <div class="container-publication-disc comment-add">
                     <label for="comment_content"><h4>Комментарий:</h4></label>
@@ -107,6 +108,7 @@
         </div>
     </div>
     {% comment %} КОНЕЦ Модальное окно {% endcomment %}
+</main>
 {% endblock content %}
     
 

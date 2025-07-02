@@ -590,6 +590,10 @@
     display: none;
   }
 }
+.main-index {
+  padding: 4rem 8rem 4rem 8rem;
+}
+
 .container-short-user-info {
   display: flex;
   flex-direction: row;
@@ -687,6 +691,19 @@
 .container-comment-content {
   padding: inherit;
   color: var(--text-black);
+}
+
+.section-add-new-publication {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-add-new-img {
+  width: 1000px;
+  height: 600px;
+  border: 1px solid #000;
 }
 
 /*---------------------------------VARIABLES---------------------------------*/
@@ -954,7 +971,7 @@ footer {
   cursor: pointer;
 }
 
-.comment-form {
+.form {
   display: flex;
   flex-direction: column;
 }
