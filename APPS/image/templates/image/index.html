@@ -20,40 +20,8 @@
         {% comment %} КОНЕЦ шапка {% endcomment %}
 
 
-        <!-- фото -->
-        <div class="container-img">
-            <img class="isimage" src="{% static 'page_pictures/test.jpg' %}" alt="">
-        </div>
-
-
-        {% comment %} заголовок фото {% endcomment %}
-        <div class="container-title-publication">
-            <!-- лайки -->
-            <div class="container-like">
-                <a href="#" class="button-like">
-                    <img class="isimage" src="{% static 'page_pictures/page decorations/heart.png' %}" alt="">
-                </a>
-
-                <div>
-                    <p>число лайков</p>
-                </div>
-            </div>
-
-            <!-- заголовок -->
-            <div class="container-title">
-                <h3>заголовок фото</h3>
-            </div>
-        </div>
-        {% comment %} КОНЕЦ заголовок фото {% endcomment %}
-
-
-        {% comment %} Описание фото {% endcomment %}
-        <div class="container-publication-disc">
-            <h4>Описание фото:</h4>
-            <p>Текст фото</p>
-        </div>
-        {% comment %} КОНЕЦ Описание фото {% endcomment %}
-
+        {% comment %} место для фото {% endcomment %}
+        {% include 'image/_any_publication.html' with like_link='#' number_likes='число лайков' image_title='заголовок фото' image_disc='это Описание фото' %}
 
         {% comment %} Комментарии {% endcomment %}
         <section class="container-comments-section">
@@ -92,6 +60,7 @@
         {% comment %} КОНЕЦ Комментарии {% endcomment %}
     </article>
     {% comment %} КОНЕЦ главный контейнер с фото и комментариями {% endcomment %}
+
 
     {% comment %} Модальное окно {% endcomment %}
     <div id="commentModal" class="modal">

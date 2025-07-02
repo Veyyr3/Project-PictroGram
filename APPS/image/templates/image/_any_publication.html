@@ -1,0 +1,46 @@
+{% load static %}
+{% comment %} Это должно обязательно быть внутри article с классом container-publication. Также иметь header {% endcomment %}
+
+{% comment %} 
+    Переменные:
+    image
+    like_link
+    number_likes
+    image_title
+    image_disc
+{% endcomment %}
+
+<!-- фото -->
+<div class="container-img">
+    {% comment %} здесь должна быть переменная image {% endcomment %}
+    <img class="isimage" src="{% static 'page_pictures/test.jpg' %}" alt="">
+</div>
+
+
+{% comment %} заголовок фото {% endcomment %}
+<div class="container-title-publication">
+    <!-- лайки -->
+    <div class="container-like">
+        <a href="{{like_link}}" class="button-like">
+            <img class="isimage" src="{% static 'page_pictures/page decorations/heart.png' %}" alt="">
+        </a>
+
+        <div>
+            <p>{{number_likes}}</p>
+        </div>
+    </div>
+
+    <!-- заголовок -->
+    <div class="container-title">
+        <h3>{{image_title}}</h3>
+    </div>
+</div>
+{% comment %} КОНЕЦ заголовок фото {% endcomment %}
+
+
+{% comment %} Описание фото {% endcomment %}
+<div class="container-publication-disc">
+    <h4>Описание фото:</h4>
+    <p>{{image_disc}}</p>
+</div>
+{% comment %} КОНЕЦ Описание фото {% endcomment %}
