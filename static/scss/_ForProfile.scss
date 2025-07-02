@@ -1,9 +1,15 @@
 // поменять информацию о профиле
 .container-info-profile {
+    width: 100%;
 
+    // grid
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
 }
 
 // контейнер менять фото профиля
 .container-add-new-img-user-logo {
-
+    width: 100%;
+    aspect-ratio: 1/1;
 }

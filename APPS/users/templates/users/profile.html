@@ -3,9 +3,10 @@
 
 {% block content %}
     <main class="gap-10px main-profile">
+        {% comment %} Секция профиля {% endcomment %}
         <section class="width-100 flex-column align-items-center">
             <div style="width: 100%; text-align: left;">
-                <h3>Добавить публикацию</h3>
+                <h3>Ваш профиль</h3>
             </div>
 
             {% comment %} поменять информацию о профиле  {% endcomment %}
@@ -22,7 +23,7 @@
                 </div>
 
                 <!-- поменять имя, описание о себе -->
-                <div>
+                <div class="form gap-10px">
                     <!-- имя пользователя -->
                     <label for="publication-name"><h4>Имя пользователя:</h4></label>
                     <input type="text" name="publication-name" id="publication-name" maxlength="30">
@@ -31,20 +32,54 @@
                     <!-- Расскажите о себе -->
                     <label for="publication-disc"><h4>Расскажите о себе:</h4></label>
                     <textarea style="resize: none;" name="publication-disc" id="publication-disc" rows="10"></textarea>
+
+                    <button class="button-green-confirm" type="submit">Обновить профиль</button>
                 </div>
 
-                <button class="button-green-confirm" type="submit">Обновить профиль</button>
             </form>
             {% comment %} КОНЕЦ поменять информацию о профиле  {% endcomment %}
 
-            {% comment %} Публикации {% endcomment %}
-            <div style="width: 100%; text-align: left;">
-                <h3>Ваши Публикации</h3>
-            </div>
 
-            
+            {% comment %} Публикации {% endcomment %}
+            <section>
+                <div style="width: 100%; text-align: left;">
+                    <h3>Ваши Публикации</h3>
+                </div>
+
+                <!-- Сами публикации -->
+                <article class="container-publication">
+                    {% comment %} шапка {% endcomment %}
+                    <header class="header-publication">
+                        <!-- фото и имя пользователя -->
+                        {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
+
+                        <!-- дата публикации -->
+                        <div class="container-publication-date">
+                            <h4>Дата публикации: 12.12.12</h4>
+                        </div>
+                    </header>
+                    {% comment %} КОНЕЦ шапка {% endcomment %}
+
+                    {% comment %} место для фото {% endcomment %}
+                    {% include 'image/_any_publication.html' with like_link='#' number_likes='число лайков' image_title='заголовок фото' image_disc='это Описание фото' %}
+                </article>
+                <!-- КОНЕЦ Сами публикации -->
+
+                <!-- добавить публикацию -->
+                <a class="container-add-publication link profile-add-publication" href="{% url 'image:add_publication' %}" style="height: 500px;">
+                    <div class="group-special-container-add-publication">
+                        <div class="special-container-add-publication-plus">
+                            <p>+</p>
+                        </div>
+                        <div class="special-container-add-publication-title">
+                            <p>Добавить публикацию</p>
+                        </div>
+                    </div>
+                </a>
+            </section>
             {% comment %} КОНЕЦ Публикации {% endcomment %}
         </section>
+        {% comment %} КОНЕЦ Секция профиля {% endcomment %}
     </main>
 {% endblock content %}
     

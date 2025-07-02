@@ -43,13 +43,21 @@
     border-radius: 25px;
     border: 1px solid black;
     cursor: pointer;
-    padding-bottom: 1rem;
-    
+
     // flex
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    // контейнер для плюс и подпись
+    .group-special-container-add-publication {
+        // flex
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 
     // контейнер со знаменитым плюсиком по центру
     .special-container-add-publication-plus {
