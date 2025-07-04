@@ -3,22 +3,37 @@
 
 
 {% block content %}
-    <main>
-        {% comment %} Секция подписок {% endcomment %}
-        <section>
-            <div style="width: 100%; text-align: left;">
-                <h3>Ваши подписки:</h3>
-            </div>
+<main class="main-subscriptions">
+    {% comment %} Секция подписок {% endcomment %}
+    <section class="width-100 flex-column align-items-center">
+        <div style="width: 100%; text-align: left;">
+            <h3>Ваши подписки:</h3>
+        </div>
 
-            <!-- подписка -->
-            <div>
+        <!-- подписка -->
+        <article class="container-comment">
+            <header>
                 <!-- фото и имя пользователя на которого подписан -->
-                {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
+                <div class="container-short-user-info">
+                    <!-- фото пользователя -->
+                    <div class="container-user-avatar">
+                        <img class="isimage" src="{% static 'page_pictures/test_logo.jpg' %}" alt="">
+                    </div>
 
-                <!-- отписаться -->
-                <a class="link button-green-confirm" href="#">Отписаться</a>
-            </div>
-        </section>
-    </main>
+                    <!-- имя пользователя -->
+                    <h4 class="user-name">имя пользователя</h4>
+                </div>
+
+                <div class="flex align-items-center gap-10px">
+                    <!-- посмотреть профиль -->
+                    <a class="link button-gray-confirm" href="#">Профиль</a>
+
+                    <!-- отписаться -->
+                    <a class="link button-red-confirm" href="#">Отписаться</a>
+                </div>
+            </header>
+        </article>
+    </section>
+</main>
 {% endblock content %}
     

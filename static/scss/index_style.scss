@@ -7,6 +7,7 @@
 @use './ForIndex';
 @use './ForAddNewPublication';
 @use './ForProfile';
+@use './Forsubscriptions';
   
 // index.scss 
 /*---------------------------------VARIABLES---------------------------------*/
@@ -93,7 +94,7 @@ body {
     --div-image-title: #AAC6E3; // блок подпись для фото
     --bg-form-color: #E5FCFF; // задний фон для заполнения форм
     --bg-alert: #FEB3B3; // предупреждение
-    --color-button-1:    #F6ECEC; // кнопки 1
+    --color-button-1:    #e1e1e1; // кнопки 1
     --color-button-2:    #FF9A9A; // кнопки 2
     --color-button-3:    #A5FAAF; // кнопки 3
     --button-illum:    #C4D6E8; // подсветка кнопок хидера

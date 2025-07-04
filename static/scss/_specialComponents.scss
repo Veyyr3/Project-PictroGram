@@ -99,7 +99,6 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        margin-top: 15px;
 
         &:hover {
             background-color: #218838;
@@ -114,10 +113,23 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        margin-top: 15px;
 
         &:hover {
             background-color: #DE8585;
+        }
+    }
+
+    // кнопка серая
+    .button-gray-confirm {
+        padding: 8px 15px;
+        background-color: var(--color-button-1);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #EDE2E2;
         }
     }
 // #endregion кнопки
