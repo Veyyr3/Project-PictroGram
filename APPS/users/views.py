@@ -12,6 +12,10 @@ def profile_other(request):
 def subscriptions(request):
     return render(request, 'users/subscriptions.html')
 
+# регистрация
+def registration(request):
+    return render(request, 'users/registration.html')
+
 # авторизация
 def login(request):
     return render(request, 'users/login.html')

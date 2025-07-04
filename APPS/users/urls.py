@@ -2,7 +2,7 @@
 from django.urls import path
 
 # контроллеры
-from users.views import profile, profile_other, subscriptions, login
+from users.views import profile, profile_other, subscriptions, login, registration
 
 # имя приложения
 app_name = 'users'
@@ -13,6 +13,6 @@ urlpatterns = [
     path('subscriptions/', subscriptions, name='subscriptions'),
 
     # авторизация, регистрация
-    # path('subscriptions/', subscriptions, name='subscriptions'),
+    path('registration/', registration, name='registration'),
     path('login/', login, name='login'),
 ]
