@@ -824,6 +824,14 @@
   gap: 20px;
 }
 
+.form-registration {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.form-registration input {
+  padding: 8px;
+}
+
 .login-mistakes {
   padding: 1rem;
   border: 1px solid #000;

@@ -13,6 +13,13 @@
 // форма регистрации
 .form-registration {
 
+    // grid
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    input {
+        padding: 8px;
+    }
 }
 
 // ошибки при авторизации/регистрации

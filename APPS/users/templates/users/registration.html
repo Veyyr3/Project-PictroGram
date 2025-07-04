@@ -1,2 +1,76 @@
 {% extends 'image/base.html' %}
 {% load static %}
+
+
+{% block content %}
+<main class="main-login">
+    <section class="width-100 flex-column align-items-center">
+        <header class="flex width-100 align-items-center jstf-cnt-sp-btw p-lg">
+            <div>
+                <h3>Регистрация</h3>
+            </div>
+
+            <div>
+                <a class="link t-underline" href="{% url 'users:login' %}">
+                    <p>Уже есть аккаунт?</p>
+                </a>
+            </div>
+        </header>
+
+        <!-- форма Авторизации -->
+        <form class="form">
+            <div class="form-registration">
+                <!-- левый -->
+                <div class="flex-column jstf-cnt-sp-btw width-100">
+                    <!-- имя -->
+                    <label for="name"><h4>Имя:</h4></label>
+                    <input type="text" name="name" id="name">
+
+                    <!-- имя пользователя -->
+                    <label for="user-name"><h4>Имя пользователя:</h4></label>
+                    <input type="text" name="user-name" id="user-name">                
+
+                    <!-- пароль -->
+                    <label for="password"><h4>Пароль:</h4></label>
+                    <input type="password" name="password" id="password-login">
+                </div>
+                <!-- КОНЕЦ левый -->
+
+                <!-- правый -->
+                <div class="flex-column jstf-cnt-sp-btw width-100">
+                    <!-- Фамилия -->
+                    <label for="user-lastname"><h4>Фамилия:</h4></label>
+                    <input type="text" name="user-lastname" id="user-lastname"> 
+
+                    <!-- Адрес электронной почты -->
+                    <label for="email"><h4>Адрес электронной почты:</h4></label>
+                    <input type="email" name="email" id="email"> 
+
+                    <!-- Подтверждение пароля -->
+                    <label for="password-confirm"><h4>Имя пользователя:</h4></label>
+                    <input type="password" name="password-confirm" id="password-confirm"> 
+                </div>
+                <!-- КОНЕЦ правый -->
+            </div>
+            
+            <button class="button-green-confirm" type="submit">Войти</button>
+        </form>
+
+        <br>
+
+        <!-- ошибки при регистрации -->
+        <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
+            <div style="width: 100%; text-align: left;">
+                <h3>Ошибки при регистрации:</h3>
+            </div>
+
+            <div class="login-mistakes">
+                <ol>
+                    <li><p>Имя не может быть пустым</p></li>
+                </ol>
+            </div>
+        </section>
+    </section>
+</main>
+{% endblock content %}
+    
