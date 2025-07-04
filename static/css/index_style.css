@@ -819,6 +819,19 @@
   padding: 0;
 }
 
+.form-login {
+  padding: 0 10rem;
+  gap: 20px;
+}
+
+.login-mistakes {
+  padding: 1rem 2rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: var(--bg-alert);
+  color: var(--text-white);
+}
+
 /*---------------------------------VARIABLES---------------------------------*/
 /*---------------------------------END VARIABLES---------------------------------*/
 /*---------------------------------TECHNICAL---------------------------------*/

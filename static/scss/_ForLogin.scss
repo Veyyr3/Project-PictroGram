@@ -4,7 +4,26 @@
     padding: 0;
 }
 
+// форма авторизации
+.form-login {
+    padding: 0 10rem;
+    gap: 20px;
+}
+
 // форма регистрации
 .form-registration {
-    
+
+}
+
+// ошибки при авторизации/регистрации
+.login-mistakes {
+    padding: 1rem 2rem;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: var(--bg-alert);
+    color: var(--text-white);
+
+    // ol {
+    //     color: inherit;
+    // }
 }
