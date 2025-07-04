@@ -500,8 +500,13 @@
   margin-bottom: auto;
 }
 
-.to-bot {
+.to-bottom {
   margin-top: auto;
+}
+
+.to-center {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .to-right-im {
@@ -516,7 +521,7 @@
   margin-bottom: auto !important;
 }
 
-.to-bot-im {
+.to-bottom-im {
   margin-top: auto !important;
 }
 

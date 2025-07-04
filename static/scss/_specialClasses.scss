@@ -524,8 +524,13 @@
             margin-bottom: auto;
         }
 
-        .to-bot {
+        .to-bottom {
             margin-top: auto;
+        }
+
+        .to-center {
+            margin-left: auto;
+            margin-right: auto;
         }
 
         // важные
@@ -541,7 +546,7 @@
             margin-bottom: auto !important;
         }
 
-        .to-bot-im {
+        .to-bottom-im {
             margin-top: auto !important;
         }
     // #endregion отступы специальные
