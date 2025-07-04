@@ -65,7 +65,7 @@
   cursor: pointer;
 }
 .button-red-confirm:hover {
-  background-color: #DE8585;
+  background-color: #ff6767;
 }
 
 .button-gray-confirm {
@@ -77,7 +77,7 @@
   cursor: pointer;
 }
 .button-gray-confirm:hover {
-  background-color: #EDE2E2;
+  background-color: #bdaaaa;
 }
 
 .clear-animation {
@@ -711,6 +711,10 @@
   border-radius: 100%;
 }
 
+.user-name-black {
+  color: var(--text-black);
+}
+
 .container-publication {
   width: 100%;
   color: var(--text-white);
@@ -827,6 +831,7 @@
 .form-registration {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
 }
 .form-registration input {
   padding: 8px;
@@ -905,8 +910,8 @@ body {
   --div-image-title: #AAC6E3;
   --bg-form-color: #E5FCFF;
   --bg-alert: #FEB3B3;
-  --color-button-1: #e1e1e1;
-  --color-button-2: #FF9A9A;
+  --color-button-1: #c5b9b9;
+  --color-button-2: #ff4040;
   --color-button-3: #A5FAAF;
   --button-illum: #C4D6E8;
   --text-white: #FFFFFF;

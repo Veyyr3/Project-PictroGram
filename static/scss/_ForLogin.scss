@@ -12,10 +12,10 @@
 
 // форма регистрации
 .form-registration {
-
     // grid
     display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
 
     input {
         padding: 8px;

@@ -18,10 +18,11 @@
         </header>
 
         <!-- форма Авторизации -->
-        <form class="form">
+        <form class="form" style="padding: 1rem 3rem; gap: 20px;">
+            <!-- таблица из двух колонок -->
             <div class="form-registration">
                 <!-- левый -->
-                <div class="flex-column jstf-cnt-sp-btw width-100">
+                <div class="flex-column jstf-cnt-sp-btw width-100 gap-10px">
                     <!-- имя -->
                     <label for="name"><h4>Имя:</h4></label>
                     <input type="text" name="name" id="name">
@@ -37,7 +38,7 @@
                 <!-- КОНЕЦ левый -->
 
                 <!-- правый -->
-                <div class="flex-column jstf-cnt-sp-btw width-100">
+                <div class="flex-column jstf-cnt-sp-btw width-100 gap-10px">
                     <!-- Фамилия -->
                     <label for="user-lastname"><h4>Фамилия:</h4></label>
                     <input type="text" name="user-lastname" id="user-lastname"> 
@@ -47,13 +48,14 @@
                     <input type="email" name="email" id="email"> 
 
                     <!-- Подтверждение пароля -->
-                    <label for="password-confirm"><h4>Имя пользователя:</h4></label>
+                    <label for="password-confirm"><h4>Подтверждение пароля:</h4></label>
                     <input type="password" name="password-confirm" id="password-confirm"> 
                 </div>
                 <!-- КОНЕЦ правый -->
             </div>
-            
-            <button class="button-green-confirm" type="submit">Войти</button>
+            <!-- КОНЕЦ таблица из двух колонок -->
+
+            <button class="button-green-confirm t-md" type="submit">Зарегистрироваться</button>
         </form>
 
         <br>
