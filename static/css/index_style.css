@@ -580,6 +580,10 @@
   font-size: 1.25rem;
 }
 
+.t-underline {
+  text-decoration: underline;
+}
+
 .flex {
   display: flex;
   flex-direction: row;
@@ -810,6 +814,11 @@
   border: 1px solid #000;
 }
 
+.main-login {
+  margin: 2rem 10rem;
+  padding: 0;
+}
+
 /*---------------------------------VARIABLES---------------------------------*/
 /*---------------------------------END VARIABLES---------------------------------*/
 /*---------------------------------TECHNICAL---------------------------------*/
@@ -899,6 +908,7 @@ header {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  color: var(--text-white);
 }
 
 #header-top {

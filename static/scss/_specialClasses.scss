@@ -591,6 +591,12 @@
         }
     // #endregion размер шрифта--------------------------------------------------------------------
 
+    // #region стиль текста
+        .t-underline {
+            text-decoration: underline;
+        }
+    // #endregion КОНЕЦ стиль текста
+
     // #region flex
         .flex {
             display: flex;
