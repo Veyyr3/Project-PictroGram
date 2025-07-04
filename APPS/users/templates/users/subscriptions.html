@@ -1,0 +1,24 @@
+{% extends 'image/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <main>
+        {% comment %} Секция подписок {% endcomment %}
+        <section>
+            <div style="width: 100%; text-align: left;">
+                <h3>Ваши подписки:</h3>
+            </div>
+
+            <!-- подписка -->
+            <div>
+                <!-- фото и имя пользователя на которого подписан -->
+                {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
+
+                <!-- отписаться -->
+                <a class="link button-green-confirm" href="#">Отписаться</a>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
+    

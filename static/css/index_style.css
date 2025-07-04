@@ -57,6 +57,19 @@
   background-color: #218838;
 }
 
+.button-red-confirm {
+  padding: 8px 15px;
+  background-color: var(--color-button-2);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.button-red-confirm:hover {
+  background-color: #DE8585;
+}
+
 .clear-animation {
   transition: none !important;
   transform: none !important;
