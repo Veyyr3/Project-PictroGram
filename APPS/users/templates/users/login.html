@@ -19,13 +19,14 @@
 
         <!-- форма Авторизации -->
         <form class="form form-login">
+            {% csrf_token %}
             <!-- имя пользователя -->
-            <label for="user-name"><h4>Имя пользователя:</h4></label>
-            <input type="text" name="user-name" id="user-name">
+            <label for="{{form.username.id_for_label}}"><h4>Имя пользователя:</h4></label>
+            {{form.username}}
 
             <!-- пароль -->
-            <label for="password"><h4>Пароль:</h4></label>
-            <input type="password" name="password" id="password-login">
+            <label for="{{form.password.id_for_label}}"><h4>Пароль:</h4></label>
+            {{form.password}}
 
             <button class="button-green-confirm t-md" type="submit">Войти</button>
         </form>
