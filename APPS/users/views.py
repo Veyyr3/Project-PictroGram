@@ -1,12 +1,7 @@
 # users/views.py
-from django.shortcuts import render
-
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.contrib import auth, messages # messages - флешка
 from django.urls import reverse # возвращает через name, spacename нужный url путь автоматически
-
-# импорт модели
-from users.models import User
 
 # импорт формы
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
@@ -19,14 +14,13 @@ def login (request):
 
         # если форма валидна
         if form.is_valid():
-            username = request.POST['username'] # вытащить имя из словаря POST
-            password = request.POST['password'] # вытащить пароль из словаря POST
-            user = auth.authenticate(username=username, password=password) # аутетифицировать пользователя по этим полям
+            # AuthenticationForm имеет метод get_user(), который возвращает аутентифицированного пользователя
+            user = form.get_user()
 
             # если пользователь есть в системе по аутетифицированным полям
             if user:
                 auth.login(request, user) # авторизуем пользователя
-                return HttpResponseRedirect(reverse('users:profile')) # перенаправляем пользователя
+                return redirect(reverse('users:profile')) # перенаправляем пользователя
     else: # если запрос гет
         form = UserLoginForm() # показать форму для регистрации
 
@@ -43,7 +37,7 @@ def registration (request):
         if form.is_valid():
             form.save() # сохранить данные
             messages.success(request, 'Поздравляем! Вы успешно зарегистрировались!') # сказать пользователю об успехе изменения данных
-            return HttpResponseRedirect(reverse('users:login'))
+            return redirect(reverse('users:login'))
     else: # если гет запрос
         form = UserRegistrationForm()
 
@@ -59,7 +53,7 @@ def profile (request):
         # если форма валидна
         if form.is_valid():
             form.save() # сохранить данные
-            return HttpResponseRedirect(reverse('users:profile')) # перенаправляем на ту же страницу, но с обновленными данными
+            return redirect(reverse('users:profile')) # перенаправляем на ту же страницу, но с обновленными данными
         # если нет
         else:
             print(form.errors)
@@ -72,7 +66,7 @@ def profile (request):
 # выйти
 def logout (request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('image:index'))
+    return redirect(reverse('image:index'))
 
 # профиль других
 def profile_other(request):

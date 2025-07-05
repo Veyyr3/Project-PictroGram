@@ -18,7 +18,7 @@
         </header>
 
         <!-- форма Авторизации -->
-        <form class="form form-login">
+        <form class="form form-login" action="{% url 'users:login' %}" method="post">
             {% csrf_token %}
             <!-- имя пользователя -->
             <label for="{{form.username.id_for_label}}"><h4>Имя пользователя:</h4></label>
@@ -34,18 +34,38 @@
         <br>
 
         <!-- ошибки при Авторизации -->
+        {% if messages or form.non_field_errors %}
         <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
             <div style="width: 100%; text-align: left;">
                 <h3>Ошибки при авторизации:</h3>
             </div>
 
+            {% comment %} вывод ошибок {% endcomment %}
             <div class="login-mistakes">
-                <ol>
-                    <li><p>Имя не может быть пустым</p></li>
-                </ol>
+                {% if messages %}
+                    {% for messageItem in messages %}
+                        <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
+                    {% endfor %}
+                {% endif %}
+
+                {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p> {{ error }} </p>
+                    {% endfor %}
+                {% endif %}
             </div>
         </section>
+        {% endif %}
+        <!-- КОНЕЦ ошибки при Авторизации -->
     </section>
 </main>
 {% endblock content %}
     
+{% comment %} {% if messages %}
+    {% for messageItem in messages %}
+        {{messageItem}}
+    {% endfor %}
+{% else %}
+    {{form.non_field_errors}}
+{% endif %} {% endcomment %}
