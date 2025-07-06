@@ -108,14 +108,15 @@
 
                         {% comment %} удалить фото (форма для безопасности) {% endcomment %}
                         <div>
-                            <form action="{% url 'users:delete_publication' imageItem.id %}" method="post" style="display:inline;">
+                            <form action="{% url 'users:delete_publication' imageItem.id %}" method="post" class="flex jstf-cnt-end">
                                 {% csrf_token %}
-                                <button type="submit" class="button-red-confirm" 
+                                <button type="submit" class="button-red-confirm mt-md t-lg"
                                         onclick="return confirm('Вы уверены, что хотите удалить эту публикацию?');">
                                     Удалить
                                 </button>
                             </form>
                         </div>
+                        {% comment %} КОНЕЦ удалить фото (форма для безопасности) {% endcomment %}
                     </article>
                     <!-- КОНЕЦ Сами публикации -->
                     {% endfor %}
