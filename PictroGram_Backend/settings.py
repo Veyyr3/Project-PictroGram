@@ -93,6 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'users.User'
 
+LOGIN_URL = '/users/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -120,17 +121,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # куда сохранять фото
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# # Настройки для django-sass-processor
-# SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static/css')  # Куда складывать scss
-
-# # Авто-компиляция при изменении SCSS (для разработки)
-# SASS_PROCESSOR_ENABLED = True  # Поставь False на продакшене
-
-# # Где искать SCSS (если они не в static/)
-# SASS_PROCESSOR_INCLUDE_DIRS = [
-#     os.path.join(BASE_DIR, 'static/scss'),
-# ]
 
 # STATICFILES_FINDERS
 STATICFILES_FINDERS = [

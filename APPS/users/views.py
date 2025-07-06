@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect
 from django.contrib import auth, messages # messages - флешка
 from django.urls import reverse # возвращает через name, spacename нужный url путь автоматически
 
+# декоратор доступа
+from django.contrib.auth.decorators import login_required
+
 # импорт формы
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
@@ -53,6 +56,7 @@ def registration (request):
     context = {'form': form}
     return render(request, 'users/registration.html', context) # перенаправление на авторизацию
 
+@login_required
 # показать профиль пользователя
 def profile (request):
     if request.method == 'POST':
