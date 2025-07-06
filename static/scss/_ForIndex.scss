@@ -52,6 +52,22 @@
         justify-content: space-between;
     }
 
+    // фото 
+    .container-img-publication {
+        // стили для контейнера
+        background-color: rgb(20, 20, 20);
+        width: 100%;
+        height: auto;
+        display: flex; // Для правильного растягивания
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        img {
+            object-fit: contain;
+        }
+    }
+
     // заголовок фото
     .container-title-publication {
         position: relative;

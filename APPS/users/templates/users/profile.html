@@ -105,6 +105,11 @@
 
                         {% comment %} место для фото {% endcomment %}
                         {% include 'image/_any_publication.html' with image=imageItem.image.url like_link='#' number_likes='число лайков' image_title=imageItem.image_name image_disc=imageItem.description %}
+
+                        {% comment %} удалить фото {% endcomment %}
+                        <div>
+                            <a class="button-red-confirm" href="#">Удалить</a>
+                        </div>
                     </article>
                     <!-- КОНЕЦ Сами публикации -->
                     {% endfor %}
