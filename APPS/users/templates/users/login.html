@@ -41,7 +41,7 @@
             </div>
 
             {% comment %} вывод ошибок {% endcomment %}
-            <div class="login-mistakes">
+            <div class="{% if form.non_field_errors %}login-mistakes{% else %}login-success{% endif %}">
                 {% if messages %}
                     {% for messageItem in messages %}
                         <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>

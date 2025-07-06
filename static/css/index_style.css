@@ -845,6 +845,14 @@
   color: var(--text-white);
 }
 
+.login-success {
+  padding: 1rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  color: var(--text-white);
+  background-color: var(--bg-success);
+}
+
 /*---------------------------------VARIABLES---------------------------------*/
 /*---------------------------------END VARIABLES---------------------------------*/
 /*---------------------------------TECHNICAL---------------------------------*/
@@ -910,6 +918,7 @@ body {
   --div-image-title: #AAC6E3;
   --bg-form-color: #E5FCFF;
   --bg-alert: #FEB3B3;
+  --bg-success: #12db6c;
   --color-button-1: #c5b9b9;
   --color-button-2: #ff4040;
   --color-button-3: #A5FAAF;

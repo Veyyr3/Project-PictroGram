@@ -30,3 +30,12 @@
     background-color: var(--bg-alert);
     color: var(--text-white);
 }
+
+// успех при авторизации/регистрации
+.login-success {
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 10px;
+    color: var(--text-white);
+    background-color: var(--bg-success);
+}
