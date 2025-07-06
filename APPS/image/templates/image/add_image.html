@@ -9,46 +9,61 @@
             <h3>Добавить публикацию</h3>
         </div>
 
-        <form class="form gap-10px" action="">
+        <form class="form gap-10px" action="{% url 'image:add_publication' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
             <!-- загруженное фото -->
             <div class="container-img container-add-new-img">
                 <img id="imagePreview" src="{% static 'page_pictures/page decorations/img-for-upload.jpg' %}" alt="Предварительный просмотр фото">
             </div>
 
             <!-- добавить фото -->
-            <input class="button-green-confirm to-left" type="file" id="imageUploadInput" accept="image/*">
+            {{form.image}}
 
 
             <!-- название публикации -->
-            <label for="publication-name"><h4>Название публикации:</h4></label>
-            <input type="text" name="publication-name" id="publication-name" maxlength="30">
+            <label for="{{form.image_name.id_for_label}}"><h4>Название публикации:</h4></label>
+            {{form.image_name}}
 
 
             <!-- Описание публикации -->
-            <label for="publication-disc"><h4>Описание публикации:</h4></label>
-            <textarea style="resize: none;" name="publication-disc" id="publication-disc" rows="10"></textarea>
+            <label for="{{form.description.id_for_label}}"><h4>Описание публикации:</h4></label>
+            {{form.description}}
 
             <button class="button-green-confirm to-right" type="submit">Добавить публикацию</button>
         </form>
 
         <!-- ошибки при добавлении -->
-        <section class="flex-column gap-10px width-100">
+        {% if messages or form.non_field_errors %}
+        <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
             <div style="width: 100%; text-align: left;">
-                <h3>Ошибки при добавлении публикации:</h3>
+                <h3>Сообщения при добавлении публикации:</h3>
             </div>
 
-            <div class="login-mistakes">
-                <ol>
-                    <li><p>Имя не может быть пустым</p></li>
-                </ol>
+            {% comment %} вывод ошибок {% endcomment %}
+            <div class="{% if form.non_field_errors %}login-mistakes{% else %}login-success{% endif %}">
+                {% if messages %}
+                    {% for messageItem in messages %}
+                        <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
+                    {% endfor %}
+                {% endif %}
+
+                {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p> {{ error }} </p>
+                    {% endfor %}
+                {% endif %}
             </div>
         </section>
+        {% endif %}
+        <!-- КОНЕЦ ошибки при добавлении -->
     </section>
 </main>
 {% endblock content %}
 
 
 {% block js %}
-<script src="{% static 'js/upload_img.js' %}"></script>
+<script src="{% static 'js/add_publication_preview.js' %}"></script>
 {% endblock js %}
     

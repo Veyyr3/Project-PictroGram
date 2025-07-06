@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Читаем выбранный файл как Data URL (base64 строка)
             reader.readAsDataURL(event.target.files[0]);
         } else {
-            // Если файл не выбран (например, пользователь отменил выбор),
-            // можно вернуть заглушку или очистить img
-            imagePreview.src = "{% static 'page_pictures/page decorations/img-for-upload.jpg' %}"; // Вернуть заглушку
+            imagePreview.src = "{% static 'page_pictures/page decorations/img-for-upload.jpg' %}";
         }
     });
 });
