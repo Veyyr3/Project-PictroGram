@@ -104,7 +104,7 @@
                         {% comment %} КОНЕЦ шапка {% endcomment %}
 
                         {% comment %} место для фото {% endcomment %}
-                        {% include 'image/_any_publication.html' with like_link='#' number_likes='число лайков' image_title='заголовок фото' image_disc='это Описание фото' %}
+                        {% include 'image/_any_publication.html' with image=imageItem.image.url like_link='#' number_likes='число лайков' image_title=imageItem.image_name image_disc=imageItem.description %}
                     </article>
                     <!-- КОНЕЦ Сами публикации -->
                     {% endfor %}
