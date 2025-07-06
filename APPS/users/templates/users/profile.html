@@ -94,7 +94,7 @@
                         {% comment %} шапка {% endcomment %}
                         <header class="header-publication">
                             <!-- фото и имя пользователя -->
-                            {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
+                            {% include 'image/_userName_and_userLogo.html' with user_avatar=imageItem.user.avatar.url user_name=imageItem.user.username  %}
 
                             <!-- дата публикации -->
                             <div class="container-publication-date">

@@ -1,15 +1,39 @@
 {% load static %}
 {% comment %} TODO поменять фото пользователя {% endcomment %}
 
-<a class="link" href="{{ link_to_user }}">
-    <!-- Фото пользователя и имя пользователя -->
-    <div class="container-short-user-info">
-        <!-- фото пользователя -->
-        <div class="container-user-avatar">
-            <img class="isimage" src="{% static 'page_pictures/test_logo.jpg' %}" alt="">
-        </div>
+{% comment %} 
+    Переменные:
+    link_to_user
+    user_avatar
+    user_name
+{% endcomment %}
 
-        <!-- имя пользователя -->
-        <h4 class="user-name">{{ user_name }}</h4>
+{% comment %} если есть ссылка на профиль пользователя {% endcomment %}
+{% if link_to_user %}
+    <a class="link" href="{{ link_to_user }}">
+        <!-- Фото пользователя и имя пользователя -->
+        <div class="container-short-user-info">
+            <!-- фото пользователя -->
+            <div class="container-user-avatar">
+                <img class="isimage" src="{{ user_avatar }}" alt="">
+            </div>
+
+            <!-- имя пользователя -->
+            <h4 class="user-name">{{ user_name }}</h4>
+        </div>
+    </a>
+{% comment %} если ссылки нет {% endcomment %}
+{% else %} 
+    <div>
+        <!-- Фото пользователя и имя пользователя -->
+        <div class="container-short-user-info">
+            <!-- фото пользователя -->
+            <div class="container-user-avatar">
+                <img class="isimage" src="{{ user_avatar }}" alt="">
+            </div>
+
+            <!-- имя пользователя -->
+            <h4 class="user-name">{{ user_name }}</h4>
+        </div>
     </div>
-</a>
+{% endif %}
