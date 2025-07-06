@@ -5,6 +5,32 @@
     <main class="gap-10px main-profile">
         {% comment %} Секция профиля {% endcomment %}
         <section class="width-100 flex-column">
+            <!-- Ошибки при изменении информации о пользователе -->
+            {% if messages or form.non_field_errors %}
+            <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
+                <div style="width: 100%; text-align: left;">
+                    <h3>Сообщения:</h3>
+                </div>
+
+                {% comment %} вывод ошибок {% endcomment %}
+                <div class="{% if form.non_field_errors %}login-mistakes{% else %}login-success{% endif %}">
+                    {% if messages %}
+                        {% for messageItem in messages %}
+                            <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <p> {{ error }} </p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
+            {% endif %}
+            <!-- КОНЕЦ Ошибки при изменении информации о пользователе -->
+
             <div style="width: 100%; text-align: left;">
                 <h3>Ваш профиль</h3>
             </div>
@@ -54,32 +80,6 @@
             </form>
             {% comment %} КОНЕЦ поменять информацию о профиле  {% endcomment %}
 
-            <!-- Ошибки при изменении информации о пользователе -->
-            {% if messages or form.non_field_errors %}
-            <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
-                <div style="width: 100%; text-align: left;">
-                    <h3>Ошибки при изменении информации о пользователе:</h3>
-                </div>
-
-                {% comment %} вывод ошибок {% endcomment %}
-                <div class="login-mistakes">
-                    {% if messages %}
-                        {% for messageItem in messages %}
-                            <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
-                        {% endfor %}
-                    {% endif %}
-
-                    {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
-                    {% if form.non_field_errors %}
-                        {% for error in form.non_field_errors %}
-                            <p> {{ error }} </p>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            </section>
-            {% endif %}
-            <!-- КОНЕЦ Ошибки при изменении информации о пользователе -->
-
             {% comment %} Публикации {% endcomment %}
             <section>
                 <div style="width: 100%; text-align: left;">
@@ -106,9 +106,15 @@
                         {% comment %} место для фото {% endcomment %}
                         {% include 'image/_any_publication.html' with image=imageItem.image.url like_link='#' number_likes='число лайков' image_title=imageItem.image_name image_disc=imageItem.description %}
 
-                        {% comment %} удалить фото {% endcomment %}
+                        {% comment %} удалить фото (форма для безопасности) {% endcomment %}
                         <div>
-                            <a class="button-red-confirm" href="#">Удалить</a>
+                            <form action="{% url 'users:delete_publication' imageItem.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="button-red-confirm" 
+                                        onclick="return confirm('Вы уверены, что хотите удалить эту публикацию?');">
+                                    Удалить
+                                </button>
+                            </form>
                         </div>
                     </article>
                     <!-- КОНЕЦ Сами публикации -->

@@ -1,7 +1,8 @@
 # users/views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages # messages - флешка
 from django.urls import reverse # возвращает через name, spacename нужный url путь автоматически
+from django.http import HttpResponseForbidden
 
 # декоратор доступа
 from django.contrib.auth.decorators import login_required
@@ -83,6 +84,22 @@ def profile (request):
 def logout (request):
     auth.logout(request)
     return redirect(reverse('image:index'))
+
+# удалить публикацию
+def delete_publication (request, image_id):
+    if request.method == 'POST':
+        image = get_object_or_404(Images, id=image_id)
+
+        # если этот бро не этот бро
+        if image.user != request.user:
+            messages.error(request, 'У вас нет прав для удаления этой публикации.')
+            return HttpResponseForbidden("У вас нет прав для удаления этой публикации.")
+        
+        image.delete()
+        messages.success(request, 'Публикация успешно удалена.')
+
+    return redirect(reverse('users:profile'))
+
 
 # профиль других
 def profile_other(request):
