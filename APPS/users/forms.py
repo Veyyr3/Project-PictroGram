@@ -21,46 +21,35 @@ class UserLoginForm (AuthenticationForm):
         'placeholder': 'Введите пароль'
     }))
 
-    # класс Мета для того, чтобы UserLoginForm знал с какой моделью работать (в данном случае с моделью пользователей)
-    class Meta:
-        model = User # указать модель
-        fields = ['username', 'password'] # поля
-
 # форма регитсрации пользователей
 class UserRegistrationForm(UserCreationForm):
     # инпут для имя
     first_name = forms.CharField(widget=forms.TextInput(attrs= {
-        'class': 'form-control py-4',
         'placeholder': 'Введите имя'
     }))
 
     # инпут для фамилии
     last_name = forms.CharField(widget=forms.TextInput(attrs= {
-        'class': 'form-control py-4',
         'placeholder': 'Введите фамилию'
     }))
 
     # логин/имя пользователя
     username = forms.CharField(widget=forms.TextInput(attrs= {
-        'class': 'form-control py-4',
         'placeholder': 'Введите имя пользователя'
     }))
 
     # почта
     email = forms.EmailField(widget=forms.EmailInput(attrs={
-        'class': 'form-control py-4',
         'placeholder': 'Введите адрес электронной почты'
     }))
 
     # введите пароль
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class': 'form-control py-4',
         'placeholder': 'Введите пароль'
     }))
 
     # подтвердите пароль
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class': 'form-control py-4',
         'placeholder': 'Повторите пароль'
     }))
 
@@ -72,7 +61,6 @@ class UserRegistrationForm(UserCreationForm):
 
 # форма изменения формы 
 class UserProfileForm(UserChangeForm):
-
     # инпут для имя
     first_name = forms.CharField(widget=forms.TextInput(attrs= {
         'class': 'form-control py-4',

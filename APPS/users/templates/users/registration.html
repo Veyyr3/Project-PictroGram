@@ -18,38 +18,40 @@
         </header>
 
         <!-- форма Авторизации -->
-        <form class="form" style="padding: 1rem 3rem; gap: 30px;">
+        <form action="{% url users:registration %}" method="post" class="form" style="padding: 1rem 3rem; gap: 30px;">
+            {% csrf_token %}
+
             <!-- таблица из двух колонок -->
             <div class="form-registration">
                 <!-- левый -->
                 <div class="flex-column jstf-cnt-sp-btw width-100 gap-10px" style="gap: 15px;">
                     <!-- имя -->
-                    <label for="name"><h4>Имя:</h4></label>
-                    <input type="text" name="name" id="name">
+                    <label for="{{form.first_name.id_for_label}}"><h4>Имя</h4></label>
+                    {{form.first_name}}
 
                     <!-- имя пользователя -->
-                    <label for="user-name"><h4>Имя пользователя:</h4></label>
-                    <input type="text" name="user-name" id="user-name">                
+                    <label for="{{form.username.id_for_label}}"><h4>Имя пользователя</h4></label>
+                    {{form.username}}
 
                     <!-- пароль -->
-                    <label for="password"><h4>Пароль:</h4></label>
-                    <input type="password" name="password" id="password-login">
+                    <label for="{{form.password1.id_for_label}}"><h4>Пароль</h4></label>
+                    {{form.password1}}
                 </div>
                 <!-- КОНЕЦ левый -->
 
                 <!-- правый -->
                 <div class="flex-column jstf-cnt-sp-btw width-100" style="gap: 15px;">
                     <!-- Фамилия -->
-                    <label for="user-lastname"><h4>Фамилия:</h4></label>
-                    <input type="text" name="user-lastname" id="user-lastname"> 
+                    <label for="{{form.last_name.id_for_label}}"><h4>Фамилия</h4></label>
+                    {{form.last_name}}
 
                     <!-- Адрес электронной почты -->
-                    <label for="email"><h4>Адрес электронной почты:</h4></label>
-                    <input type="email" name="email" id="email"> 
+                    <label for="{{form.email.id_for_label}}"><h4>Адрес электронной почты</h4></label>
+                    {{form.email}}                    
 
                     <!-- Подтверждение пароля -->
-                    <label for="password-confirm"><h4>Подтверждение пароля:</h4></label>
-                    <input type="password" name="password-confirm" id="password-confirm"> 
+                    <label for={{form.password2.id_for_label}}><h4>Подтверждение пароля</h4></label>
+                    {{form.password2}}                    
                 </div>
                 <!-- КОНЕЦ правый -->
             </div>
@@ -61,17 +63,30 @@
         <br>
 
         <!-- ошибки при регистрации -->
+        {% if messages or form.non_field_errors %}
         <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
             <div style="width: 100%; text-align: left;">
                 <h3>Ошибки при регистрации:</h3>
             </div>
 
+            {% comment %} вывод ошибок {% endcomment %}
             <div class="login-mistakes">
-                <ol>
-                    <li><p>Имя не может быть пустым</p></li>
-                </ol>
+                {% if messages %}
+                    {% for messageItem in messages %}
+                        <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
+                    {% endfor %}
+                {% endif %}
+
+                {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p> {{ error }} </p>
+                    {% endfor %}
+                {% endif %}
             </div>
         </section>
+        {% endif %}
+        <!-- КОНЕЦ ошибки при регистрации -->
     </section>
 </main>
 {% endblock content %}
