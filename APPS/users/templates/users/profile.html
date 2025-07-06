@@ -10,14 +10,17 @@
             </div>
 
             {% comment %} поменять информацию о профиле  {% endcomment %}
-            <form class="flex-column gap-10px" action="">
+            <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data" class="flex-column gap-10px">
+                {% csrf_token %}
+
                 <!-- поменять профиль -->
                 <div class="container-info-profile">
                     <!-- сменить аватар -->
                     <div>
                         <!-- загруженное фото -->
                         <div class="container-img container-add-new-img-user-logo">
-                            <img id="imagePreview" src="{% static 'page_pictures/page decorations/img-for-upload.jpg' %}" alt="Предварительный просмотр фото">
+                        {% comment %} Если у пользователя нет фото, то ему по дефолту будут выдавать {% endcomment %}
+                            <img id="imagePreview" src="{% if user.avatar %}{{user.avatar.url}}{% else %}{% static 'page_pictures/page decorations/img-for-upload.jpg' %}{% endif %}" alt="Предварительный просмотр фото">
                         </div>
                     </div>
 
@@ -25,14 +28,14 @@
                     <div class="flex-column jstf-cnt-sp-btw">
                         <div class="form">
                             <!-- имя пользователя -->
-                            <label for="publication-name"><h4>Имя пользователя:</h4></label>
-                            <input type="text" name="publication-name" id="publication-name" maxlength="30">
+                            <label for="{{form.username.id_for_label}}"><h4>Имя пользователя:</h4></label>
+                            {{form.username}}
                         </div>
                         
                         <div class="form">
                             <!-- Расскажите о себе -->
-                            <label for="publication-disc"><h4>Расскажите о себе:</h4></label>
-                            <textarea style="resize: none;" name="publication-disc" id="publication-disc" rows="10"></textarea>
+                            <label for="{{form.bio.id_for_label}}"><h4>Расскажите о себе:</h4></label>
+                            {{form.bio}}
                         </div>
                     </div>
                 </div>
@@ -40,7 +43,7 @@
                 <!-- подтвердить изменения -->
                 <div class="flex jstf-cnt-sp-btw width-100 align-items-center">
                     <!-- добавить фото -->
-                    <input class="" type="file" id="imageUploadInput" accept="image/*">
+                    {{form.avatar}}
 
                     <!-- выйти или обновить -->
                     <div>
@@ -51,6 +54,31 @@
             </form>
             {% comment %} КОНЕЦ поменять информацию о профиле  {% endcomment %}
 
+            <!-- Ошибки при изменении информации о пользователе -->
+            {% if messages or form.non_field_errors %}
+            <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
+                <div style="width: 100%; text-align: left;">
+                    <h3>Ошибки при изменении информации о пользователе:</h3>
+                </div>
+
+                {% comment %} вывод ошибок {% endcomment %}
+                <div class="login-mistakes">
+                    {% if messages %}
+                        {% for messageItem in messages %}
+                            <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <p> {{ error }} </p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
+            {% endif %}
+            <!-- КОНЕЦ Ошибки при изменении информации о пользователе -->
 
             {% comment %} Публикации {% endcomment %}
             <section>
@@ -97,6 +125,6 @@
     
 
 {% block js %}
-<script src="{% static 'js/upload_img.js' %}"></script>
+<script src="{% static 'js/profile_avatar_preview.js' %}"></script>
 {% endblock js %}
     

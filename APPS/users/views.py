@@ -36,13 +36,13 @@ def registration (request):
         # если форма валидна
         if form.is_valid():
             form.save() # сохранить данные
-            messages.success(request, 'Поздравляем! Вы успешно зарегистрировались!') # сказать пользователю об успехе изменения данных
+            messages.success(request, 'Поздравляем! Вы успешно зарегистрировались! Теперь войдите в систему') # сказать пользователю об успехе изменения данных
             return redirect(reverse('users:login'))
     else: # если гет запрос
         form = UserRegistrationForm()
 
     context = {'form': form}
-    return render(request, 'users/registration.html', context)
+    return render(request, 'users/login.html', context) # перенаправление на авторизацию
 
 # показать профиль пользователя
 def profile (request):

@@ -61,33 +61,20 @@ class UserRegistrationForm(UserCreationForm):
 
 # форма изменения формы 
 class UserProfileForm(UserChangeForm):
-    # инпут для имя
-    first_name = forms.CharField(widget=forms.TextInput(attrs= {
-        'class': 'form-control py-4',
-    }))
-
-    # инпут для фамилии
-    last_name = forms.CharField(widget=forms.TextInput(attrs= {
-        'class': 'form-control py-4',
-    }))
-
     # логин/имя пользователя
-    username = forms.CharField(widget=forms.TextInput(attrs= {
-        'class': 'form-control py-4',
-        'readonly': True
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'maxlength': 30,
     }))
 
-    # почта
-    email = forms.EmailField(widget=forms.EmailInput(attrs={
-        'class': 'form-control py-4',
-        'readonly': True
-    }))
+    # расскажите о себе
+    bio = forms.TextField(widget=forms.Textarea(attrs={
+        'rows': 10,
+        'style': 'resize: none;'
+    }), required=False)
 
     # изображение
-    image = forms.ImageField(widget=forms.FileInput(attrs={
-        'class': 'custom-file-input',
-    }), required=False)
+    avatar = forms.ImageField(widget=forms.FileInput(), required=False)
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'image']
+        fields = ['username', 'bio', 'avatar']
