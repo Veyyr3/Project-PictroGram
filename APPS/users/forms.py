@@ -67,7 +67,7 @@ class UserProfileForm(UserChangeForm):
     }))
 
     # расскажите о себе
-    bio = forms.TextField(widget=forms.Textarea(attrs={
+    bio = forms.CharField(widget=forms.Textarea(attrs={
         'rows': 10,
         'style': 'resize: none;'
     }), required=False)

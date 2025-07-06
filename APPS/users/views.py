@@ -42,7 +42,7 @@ def registration (request):
         form = UserRegistrationForm()
 
     context = {'form': form}
-    return render(request, 'users/login.html', context) # перенаправление на авторизацию
+    return render(request, 'users/registration.html', context) # перенаправление на авторизацию
 
 # показать профиль пользователя
 def profile (request):

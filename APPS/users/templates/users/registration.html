@@ -18,7 +18,7 @@
         </header>
 
         <!-- форма Авторизации -->
-        <form action="{% url users:registration %}" method="post" class="form" style="padding: 1rem 3rem; gap: 30px;">
+        <form action="{% url 'users:registration' %}" method="post" class="form" style="padding: 1rem 3rem; gap: 30px;">
             {% csrf_token %}
 
             <!-- таблица из двух колонок -->
