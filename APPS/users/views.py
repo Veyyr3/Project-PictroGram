@@ -19,8 +19,14 @@ def login (request):
 
             # если пользователь есть в системе по аутетифицированным полям
             if user:
+                print(f"Пользователь найден: {user.username}") # Отладка
                 auth.login(request, user) # авторизуем пользователя
+                print("Пользователь авторизован.") # Отладка
                 return redirect(reverse('users:profile')) # перенаправляем пользователя
+            else:
+                print("form.get_user() вернул None (пользователь не найден).")
+        else:
+            print("Форма авторизации НЕ валидна. Ошибки:", form.errors) # Отладка
     else: # если запрос гет
         form = UserLoginForm() # показать форму для регистрации
 

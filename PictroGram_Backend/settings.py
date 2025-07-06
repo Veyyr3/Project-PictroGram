@@ -28,8 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # 'sass_processor', # SCSS
-
     'APPS.users.apps.UserConfig',
     'APPS.image.apps.ImageConfig',
 ]
@@ -93,7 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = 'users.User'
 
 
 # Internationalization
