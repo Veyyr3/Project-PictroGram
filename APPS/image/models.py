@@ -1,3 +1,4 @@
+# image/model.py
 from django.db import models
 
 # модель пользователей

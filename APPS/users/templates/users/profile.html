@@ -87,23 +87,33 @@
                 </div>
 
                 <!-- Сами публикации -->
-                <article class="container-publication">
-                    {% comment %} шапка {% endcomment %}
-                    <header class="header-publication">
-                        <!-- фото и имя пользователя -->
-                        {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
+                {% comment %} если есть фото {% endcomment %}
+                {% if images %}
+                    {% for imageItem in images %}
+                        <article class="container-publication">
+                        {% comment %} шапка {% endcomment %}
+                        <header class="header-publication">
+                            <!-- фото и имя пользователя -->
+                            {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
 
-                        <!-- дата публикации -->
-                        <div class="container-publication-date">
-                            <h4>Дата публикации: 12.12.12</h4>
-                        </div>
-                    </header>
-                    {% comment %} КОНЕЦ шапка {% endcomment %}
+                            <!-- дата публикации -->
+                            <div class="container-publication-date">
+                                <h4>Дата публикации: {{imageItem.created_at}}</h4>
+                            </div>
+                        </header>
+                        {% comment %} КОНЕЦ шапка {% endcomment %}
 
-                    {% comment %} место для фото {% endcomment %}
-                    {% include 'image/_any_publication.html' with like_link='#' number_likes='число лайков' image_title='заголовок фото' image_disc='это Описание фото' %}
-                </article>
-                <!-- КОНЕЦ Сами публикации -->
+                        {% comment %} место для фото {% endcomment %}
+                        {% include 'image/_any_publication.html' with like_link='#' number_likes='число лайков' image_title='заголовок фото' image_disc='это Описание фото' %}
+                    </article>
+                    <!-- КОНЕЦ Сами публикации -->
+                    {% endfor %}
+                {% else %} 
+                    <div class="flex-column width-100">
+                        <h2 style="text-align: center;">У вас нет публикации :(</h2>
+                    </div>
+                {% endif %}
+                
 
                 <!-- добавить публикацию -->
                 <a class="container-add-publication link profile-add-publication" href="{% url 'image:add_publication' %}" style="height: 500px;">

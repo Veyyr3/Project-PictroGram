@@ -6,6 +6,9 @@ from django.urls import reverse # возвращает через name, spacenam
 # импорт формы
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
+# импорт модели
+from image.models import Images
+
 # авторизация пользователя
 def login (request):
     # если запрос пост
@@ -65,8 +68,11 @@ def profile (request):
             print(form.errors)
     else:
         form = UserProfileForm(instance=request.user) # показать пользователю форму и заполнить её данными о пользователе
+
+        # взять те фото, которые добавил пользователь
+        images = Images.objects.filter(user=request.user).order_by('-created_at')
     
-    context = {'form': form}
+    context = {'form': form, 'images': images}
     return render(request, 'users/profile.html', context)
 
 # выйти
