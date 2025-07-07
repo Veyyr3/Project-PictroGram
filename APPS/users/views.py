@@ -12,6 +12,7 @@ from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 # импорт модели
 from image.models import Images
+from users.models import User
 
 # авторизация пользователя
 def login (request):
@@ -57,6 +58,17 @@ def registration (request):
     context = {'form': form}
     return render(request, 'users/registration.html', context) # перенаправление на авторизацию
 
+# посмотреть профиль другого пользователя
+def profile_other(request, user_id):
+    # данный пользователь
+    this_user = get_object_or_404(User, id=user_id)
+
+
+    context = {
+        'this_user': this_user,
+    }
+    return render(request, 'users/profile_other.html', context)
+
 @login_required
 # показать профиль пользователя
 def profile (request):
@@ -99,11 +111,6 @@ def delete_publication (request, image_id):
         messages.success(request, 'Публикация успешно удалена.')
 
     return redirect(reverse('users:profile'))
-
-
-# профиль других
-def profile_other(request):
-    return render(request, 'users/profile_other.html')
 
 # подписки
 def subscriptions(request):

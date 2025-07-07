@@ -9,7 +9,7 @@ app_name = 'users'
 
 urlpatterns = [
     path('', profile, name='profile'),
-    path('profile_other/', profile_other, name='profile_other'),
+    path('profile_other/<int:user_id>', profile_other, name='profile_other'),
     path('subscriptions/', subscriptions, name='subscriptions'),
 
     # авторизация, регистрация

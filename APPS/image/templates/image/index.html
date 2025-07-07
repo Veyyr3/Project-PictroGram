@@ -6,12 +6,12 @@
 {% block content %}
 <main class="gap-20px main-index">
     {% comment %} главный контейнер с фото и комментариями {% endcomment %}
-    <article class="container-publication">
     {% for publicationsItem in publications %}
+    <article class="container-publication">
         {% comment %} шапка {% endcomment %}
         <header class="header-publication">
             <!-- фото и имя пользователя -->
-            {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_avatar=publicationsItem.user.avatar user_name=publicationsItem.user.username  %}
+            {% include 'image/_userName_and_userLogo.html' with user_id=publicationsItem.user.id user_avatar=publicationsItem.user.avatar user_name=publicationsItem.user.username  %}
 
             <!-- дата публикации -->
             <div class="container-publication-date">
@@ -33,7 +33,7 @@
                 <!-- шапка комментария -->
                 <header>
                     <!-- фото и имя пользователя -->
-                    {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
+                    {% include 'image/_userName_and_userLogo.html' with  user_logo='' user_name='имя пользователя'  %}
 
                     <!-- дата публикации -->
                     <div class="container-publication-date-comment">
@@ -59,8 +59,9 @@
             </div>
         </section>
         {% comment %} КОНЕЦ Комментарии {% endcomment %}
-    {% endfor %}
     </article>
+    {% endfor %}
+    
     {% comment %} КОНЕЦ главный контейнер с фото и комментариями {% endcomment %}
 
 

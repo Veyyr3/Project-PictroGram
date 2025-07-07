@@ -3,14 +3,14 @@
 
 {% comment %} 
     Переменные:
-    link_to_user
+    user_id
     user_avatar
     user_name
 {% endcomment %}
 
 {% comment %} если есть ссылка на профиль пользователя {% endcomment %}
-{% if link_to_user %}
-    <a class="link" href="{{ link_to_user }}">
+{% if user_id %}
+    <a class="link" href="{% url 'users:profile_other' user_id=user_id %}" title="Перейти на профиль пользователя">
         <!-- Фото пользователя и имя пользователя -->
         <div class="container-short-user-info">
             <!-- фото пользователя -->
