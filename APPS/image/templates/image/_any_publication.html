@@ -4,7 +4,7 @@
 {% comment %} 
     Переменные:
     image
-    like_link
+    publication_id
     number_likes
     image_title
     image_disc
@@ -21,7 +21,7 @@
 <div class="container-title-publication">
     <!-- лайки -->
     <div class="container-like">
-        <a href="{{like_link}}" class="button-like">
+        <a href="{% url 'image:like' image_id=publication_id %}" class="button-like">
             <img class="isimage" src="{% static 'page_pictures/page decorations/heart.png' %}" alt="">
         </a>
 

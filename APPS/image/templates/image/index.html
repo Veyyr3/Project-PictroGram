@@ -5,6 +5,32 @@
 
 {% block content %}
 <main class="gap-20px main-index">
+    <!-- Сообщения -->
+    {% if messages or form.non_field_errors %}
+    <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
+        <div style="width: 100%; text-align: left;">
+            <h3>Сообщения:</h3>
+        </div>
+
+        {% comment %} вывод ошибок {% endcomment %}
+        <div class="{% if form.non_field_errors %}login-mistakes{% else %}login-success{% endif %}">
+            {% if messages %}
+                {% for messageItem in messages %}
+                    <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
+                {% endfor %}
+            {% endif %}
+
+            {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p> {{ error }} </p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+    <!-- КОНЕЦ Сообщения -->
+
     {% comment %} главный контейнер с фото и комментариями {% endcomment %}
     {% for publicationsItem in publications %}
     <article class="container-publication">
@@ -22,7 +48,7 @@
 
 
         {% comment %} место для фото {% endcomment %}
-        {% include 'image/_any_publication.html' with image=publicationsItem.image.url like_link='#' number_likes='число лайков' image_title=publicationsItem.image_name image_disc=publicationsItem.description %}
+        {% include 'image/_any_publication.html' with image=publicationsItem.image.url publication_id=publicationsItem.id number_likes='123' image_title=publicationsItem.image_name image_disc=publicationsItem.description %}
 
         {% comment %} Комментарии {% endcomment %}
         <section class="container-comments-section">

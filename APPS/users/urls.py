@@ -1,4 +1,4 @@
-# products/urls.py
+# users/urls.py
 from django.urls import path
 
 # контроллеры
