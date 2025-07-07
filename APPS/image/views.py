@@ -12,7 +12,13 @@ from image.models import Images
 
 # главная страница
 def index(request):
-    return render(request, 'image/index.html')
+    publications = Images.objects.all().order_by('-created_at')
+
+    context = {
+        'publications': publications,
+    }
+
+    return render(request, 'image/index.html', context)
 
 # добавление публикации
 def add_publication(request):

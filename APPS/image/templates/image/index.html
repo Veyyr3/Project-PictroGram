@@ -7,21 +7,22 @@
 <main class="gap-20px main-index">
     {% comment %} главный контейнер с фото и комментариями {% endcomment %}
     <article class="container-publication">
+    {% for publicationsItem in publications %}
         {% comment %} шапка {% endcomment %}
         <header class="header-publication">
             <!-- фото и имя пользователя -->
-            {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_logo='' user_name='имя пользователя'  %}
+            {% include 'image/_userName_and_userLogo.html' with link_to_user='#' user_avatar=publicationsItem.user.avatar user_name=publicationsItem.user.username  %}
 
             <!-- дата публикации -->
             <div class="container-publication-date">
-                <h4>Дата публикации: 12.12.12</h4>
+                <h4>Дата публикации: {{publicationsItem.created_at}}</h4>
             </div>
         </header>
         {% comment %} КОНЕЦ шапка {% endcomment %}
 
 
         {% comment %} место для фото {% endcomment %}
-        {% include 'image/_any_publication.html' with like_link='#' number_likes='число лайков' image_title='заголовок фото' image_disc='это Описание фото' %}
+        {% include 'image/_any_publication.html' with image=publicationsItem.image.url like_link='#' number_likes='число лайков' image_title=publicationsItem.image_name image_disc=publicationsItem.description %}
 
         {% comment %} Комментарии {% endcomment %}
         <section class="container-comments-section">
@@ -58,6 +59,7 @@
             </div>
         </section>
         {% comment %} КОНЕЦ Комментарии {% endcomment %}
+    {% endfor %}
     </article>
     {% comment %} КОНЕЦ главный контейнер с фото и комментариями {% endcomment %}
 
