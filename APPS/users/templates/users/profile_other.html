@@ -17,7 +17,7 @@
                     <div>
                         <!-- загруженное фото -->
                         <div class="container-img container-add-new-img-user-logo">
-                            <img src="{% static 'page_pictures/test_logo.jpg' %}" alt="Аватар пользователя">
+                            <img src="{{this_user.avatar.url}}" alt="Аватар пользователя">
                         </div>
                     </div>
 
@@ -26,13 +26,13 @@
                         <div class="flex-column">
                             <!-- имя пользователя -->
                             <h4>Имя пользователя:</h4>
-                            <p>Здесь будет какое-то имя</p>
+                            <p>{{this_user.username}}</p>
                         </div>
                         
                         <div class="flex-column">
                             <!-- о себе -->
                             <h4>О себе:</h4>
-                            <p>Здесь описание</p>
+                            <p>{{this_user.bio}}</p>
                         </div>
                     </div>
                 </div>
@@ -52,22 +52,24 @@
                 </div>
 
                 <!-- Сами публикации -->
-                <article class="container-publication">
-                    {% comment %} шапка {% endcomment %}
-                    <header class="header-publication">
-                        <!-- фото и имя пользователя -->
-                        {% include 'image/_userName_and_userLogo.html' with user_logo='' user_name='имя пользователя'  %}
+                {% for publicationsItem in publications %}
+                    <article class="container-publication">
+                        {% comment %} шапка {% endcomment %}
+                        <header class="header-publication">
+                            <!-- фото и имя пользователя -->
+                            {% include 'image/_userName_and_userLogo.html' with user_id=publicationsItem.user.id user_avatar=publicationsItem.user.avatar user_name=publicationsItem.user.username  %}
 
-                        <!-- дата публикации -->
-                        <div class="container-publication-date">
-                            <h4>Дата публикации: 12.12.12</h4>
-                        </div>
-                    </header>
-                    {% comment %} КОНЕЦ шапка {% endcomment %}
+                            <!-- дата публикации -->
+                            <div class="container-publication-date">
+                                <h4>Дата публикации: {{publicationsItem.created_at}}</h4>
+                            </div>
+                        </header>
+                        {% comment %} КОНЕЦ шапка {% endcomment %}
 
-                    {% comment %} место для фото {% endcomment %}
-                    {% include 'image/_any_publication.html' with like_link='#' number_likes='число лайков' image_title='заголовок фото' image_disc='это Описание фото' %}
-                </article>
+                        {% comment %} место для фото {% endcomment %}
+                        {% include 'image/_any_publication.html' with image=publicationsItem.image.url like_link='#' number_likes='число лайков' image_title=publicationsItem.image_name image_disc=publicationsItem.description %}
+                    </article>
+                {% endfor %}
                 <!-- КОНЕЦ Сами публикации -->
             </section>
             {% comment %} КОНЕЦ Публикации {% endcomment %}

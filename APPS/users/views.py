@@ -63,9 +63,13 @@ def profile_other(request, user_id):
     # данный пользователь
     this_user = get_object_or_404(User, id=user_id)
 
+    # его публикации
+    publications = Images.objects.filter(user=user_id).order_by('-created_at')
+
 
     context = {
         'this_user': this_user,
+        'publications': publications,
     }
     return render(request, 'users/profile_other.html', context)
 
