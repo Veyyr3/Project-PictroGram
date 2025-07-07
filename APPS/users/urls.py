@@ -2,15 +2,20 @@
 from django.urls import path
 
 # контроллеры
-from users.views import profile, profile_other, subscriptions, login, registration, logout, delete_publication
+from users.views import profile, profile_other, subscriptions, login, registration, logout, delete_publication, subscribe, unsubscribe
 
 # имя приложения
 app_name = 'users'
 
 urlpatterns = [
     path('', profile, name='profile'),
-    path('profile_other/<int:user_id>', profile_other, name='profile_other'),
-    path('subscriptions/', subscriptions, name='subscriptions'),
+
+    # работа с чужими профилями
+    path('profile_other/<int:user_id>', profile_other, name='profile_other'), # посмотреть профиль других
+    path('subscriptions/', subscriptions, name='subscriptions'), # посмотреть свои подписки
+    path('subscribe/<int:user_id>', subscribe, name='subscribe'), # подписаться
+    path('unsubscribe/<int:user_id>', unsubscribe, name='unsubscribe'), # отписаться
+
 
     # авторизация, регистрация
     path('registration/', registration, name='registration'),

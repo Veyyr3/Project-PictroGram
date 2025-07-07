@@ -12,7 +12,7 @@ from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 # импорт модели
 from image.models import Images
-from users.models import User
+from users.models import User, Subscriptions
 
 # авторизация пользователя
 def login (request):
@@ -66,10 +66,21 @@ def profile_other(request, user_id):
     # его публикации
     publications = Images.objects.filter(user=user_id).order_by('-created_at')
 
+    # Сделал ли ТЕКУЩИЙ АВТОРИЗОВАННЫЙ пользователь подписку на ЭТОГО пользователя
+    is_subscribed = False # По умолчанию считаем, что подписки нет
+
+    # если пользователь авторизован
+    if request.user.is_authenticated:
+        # проверяем существует ли запись
+        is_subscribed = Subscriptions.objects.filter(
+            subscriber=request.user,
+            subscribed_to=this_user
+        ).exists()
 
     context = {
         'this_user': this_user,
         'publications': publications,
+        'is_subscribed': is_subscribed,
     }
     return render(request, 'users/profile_other.html', context)
 
@@ -116,6 +127,34 @@ def delete_publication (request, image_id):
 
     return redirect(reverse('users:profile'))
 
-# подписки
+# посмотреть свои подписки
 def subscriptions(request):
     return render(request, 'users/subscriptions.html')
+
+# подписаться на кого-нибудь
+def subscribe(request, user_id):
+    # пользователь на которого подписываются
+    user_subscribed_to = User.objects.get(id=user_id)
+
+    # создать подписку
+    subscribe, subscribe_created = Subscriptions.objects.get_or_create(subscriber=request.user, subscribed_to=user_subscribed_to)
+
+    # проверка подписки
+    if subscribe_created:
+        messages.success(request,'Вы успешно подписались на пользователя!')
+    else:
+        messages.error(request,'Возникли ошибки, когда вы попытались подписаться.')
+        
+    return redirect(reverse('users:profile_other', kwargs={'user_id': user_subscribed_to.id}))
+
+# отписаться
+def unsubscribe(request, user_id):
+    # пользователь на которого отписываются
+    user_subscribed_to = User.objects.get(id=user_id)
+
+    # подписка
+    subscription = Subscriptions.objects.get(subscriber=request.user, subscribed_to=user_subscribed_to)
+
+    subscription.delete()
+
+    return redirect(reverse('users:profile_other', kwargs={'user_id': user_subscribed_to.id}))

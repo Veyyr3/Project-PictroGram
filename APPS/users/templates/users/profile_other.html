@@ -39,7 +39,12 @@
 
                 <!-- Подписаться-->
                 <div class="flex jstf-cnt-sp-btw width-100 align-items-center">
-                    <a class="button-green-confirm link to-left" style="color: white;" href="#">Подписаться</a>
+                    {% comment %} если подписка была сделана, то отписываться {% endcomment %}
+                    {% if is_subscribed %}
+                        <a class="button-red-confirm link to-left" style="color: white;" href="{% url 'users:unsubscribe' user_id=this_user.id %}">Отписаться</a>
+                    {% else %}
+                        <a class="button-green-confirm link to-left" style="color: white;" href="{% url 'users:subscribe' user_id=this_user.id %}">Подписаться</a>
+                    {% endif %}
                 </div>
             </div>
             {% comment %} КОНЕЦ поменять информацию о профиле  {% endcomment %}
