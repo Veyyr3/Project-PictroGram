@@ -844,6 +844,11 @@
   padding: 0;
 }
 
+.main-register {
+  margin: 2rem 15rem;
+  padding: 0;
+}
+
 .form-login {
   padding: 0 10rem;
   gap: 20px;
