@@ -48,7 +48,8 @@
 
 
         {% comment %} место для фото {% endcomment %}
-        {% include 'image/_any_publication.html' with image=publicationsItem.image.url publication_id=publicationsItem.id number_likes='123' image_title=publicationsItem.image_name image_disc=publicationsItem.description %}
+        {% include 'image/_any_publication.html' with image=publicationsItem.image.url publication_id=publicationsItem.id number_likes=publicationsItem.like_count image_title=publicationsItem.image_name image_disc=publicationsItem.description is_liked=publicationsItem.is_liked_by_user %}
+        
 
         {% comment %} Комментарии {% endcomment %}
         <section class="container-comments-section">

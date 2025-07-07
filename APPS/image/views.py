@@ -1,6 +1,8 @@
+# image/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse # возвращает через name, spacename нужный url путь автоматически
 from django.contrib import messages
+from django.db.models import Count, Exists, OuterRef, Value
 from django.contrib.auth.decorators import login_required
 
 # формочки
@@ -14,9 +16,31 @@ from image.models import Images, Likes
 
 # главная страница
 def index(request):
-    # публикации
-    publications = Images.objects.all().order_by('-created_at')
+    # Начальный QuerySet для публикаций
+    publications_queryset = Images.objects.all().order_by('-created_at')
 
+    # Если пользователь авторизован, аннотируем QuerySet информацией о лайке
+    if request.user.is_authenticated:
+        publications = publications_queryset.annotate(
+            # Подсчет лайков для каждой публикации
+            like_count=Count('image_likes'), # 'image_likes' - это related_name или дефолтное имя для ForeignKey
+
+            # Проверка, лайкнул ли ТЕКУЩИЙ пользователь эту публикацию
+            # OuterRef позволяет ссылаться на поле из внешнего запроса
+            # Exists проверяет наличие связанного объекта без полной его загрузки
+            is_liked_by_user=Exists(
+                Likes.objects.filter(
+                    image=OuterRef('pk'), # 'pk' относится к текущей публикации во внешнем запросе
+                    user=request.user      # Проверяем на текущего пользователя
+                )
+            )
+        )
+    else:
+        publications = publications_queryset.annotate(
+            like_count=Count('image_likes'),
+            is_liked_by_user=Value(False) # Устанавливаем False для всех неавторизованных
+        )
+    
     context = {
         'publications': publications,
     }

@@ -8,6 +8,7 @@
     number_likes
     image_title
     image_disc
+    is_liked
 {% endcomment %}
 
 <!-- фото -->
@@ -22,7 +23,11 @@
     <!-- лайки -->
     <div class="container-like">
         <a href="{% url 'image:like' image_id=publication_id %}" class="button-like">
-            <img class="isimage" src="{% static 'page_pictures/page decorations/heart.png' %}" alt="">
+            {% if is_liked %}
+                <img class="isimage" src="{% static 'page_pictures/page decorations/heart_red.png' %}" alt="Liked">
+            {% else %}
+                <img class="isimage" src="{% static 'page_pictures/page decorations/heart.png' %}" alt="Not Liked">
+            {% endif %}
         </a>
 
         <div>
