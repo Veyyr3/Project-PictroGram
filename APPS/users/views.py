@@ -165,7 +165,18 @@ def delete_publication (request, image_id):
 
 # посмотреть свои подписки
 def subscriptions(request):
-    return render(request, 'users/subscriptions.html')
+    # все подписки пользователя
+    all_subscriptions = Subscriptions.objects.filter(subscriber=request.user)
+
+    # число подписок
+    count_subscriptions = request.user.subscriptions_made.count()
+
+    context = {
+        'all_subscriptions': all_subscriptions,
+        'count_subscriptions': count_subscriptions,
+    }
+
+    return render(request, 'users/subscriptions.html', context)
 
 # подписаться на кого-нибудь
 def subscribe(request, user_id):
@@ -195,4 +206,8 @@ def unsubscribe(request, user_id):
 
     messages.success(request,'Вы успешно отписались от пользователя!')
 
-    return redirect(reverse('users:profile_other', kwargs={'user_id': user_subscribed_to.id}))
+    next_url = request.META.get('HTTP_REFERER')
+    if not next_url:
+        return redirect(reverse('users:profile_other', kwargs={'user_id': user_subscribed_to.id}))
+
+    return redirect(next_url)

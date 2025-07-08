@@ -6,34 +6,69 @@
 <main class="main-subscriptions">
     {% comment %} Секция подписок {% endcomment %}
     <section class="width-100 flex-column align-items-center">
-        <div style="width: 100%; text-align: left;">
-            <h3>Ваши подписки:</h3>
+        <!-- Сообщения -->
+        {% if messages or form.non_field_errors %}
+        <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
+            <div style="width: 100%; text-align: left;">
+                <h3>Сообщения:</h3>
+            </div>
+
+            {% comment %} вывод ошибок {% endcomment %}
+            <div class="{% if form.non_field_errors %}login-mistakes{% else %}login-success{% endif %}">
+                {% if messages %}
+                    {% for messageItem in messages %}
+                        <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
+                    {% endfor %}
+                {% endif %}
+
+                {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p> {{ error }} </p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+        {% endif %}
+        <!-- КОНЕЦ Сообщения -->
+
+        <div class="flex-column width-100 gap-10px">
+            <div>
+                <h3>Ваши подписки:</h3>
+            </div>
+            <div>
+                <p>Количество подписок: {{count_subscriptions}}</p>
+            </div>
         </div>
 
         <!-- подписка -->
-        <article class="container-comment">
-            <header>
-                <!-- фото и имя пользователя на которого подписан -->
-                <div class="container-short-user-info">
-                    <!-- фото пользователя -->
-                    <div class="container-user-avatar">
-                        <img class="isimage" src="{% static 'page_pictures/test_logo.jpg' %}" alt="">
+        
+        {% for subscriptionItem in all_subscriptions %}
+            <article class="container-comment">
+                <header>
+                    <!-- фото и имя пользователя на которого подписан -->
+                    <div class="container-short-user-info">
+                        <!-- фото пользователя -->
+                        <div class="container-user-avatar">
+                            <img class="isimage" src="{{subscriptionItem.subscribed_to.avatar.url}}" alt="">
+                        </div>
+
+                        <!-- имя пользователя -->
+                        <h4 class="user-name-black">{{subscriptionItem.subscribed_to.username}}</h4>
                     </div>
 
-                    <!-- имя пользователя -->
-                    <h4 class="user-name-black">имя пользователя</h4>
-                </div>
+                    <div class="flex align-items-center gap-10px">
+                        <!-- посмотреть профиль -->
+                        <a class="link button-gray-confirm" href="{% url 'users:profile_other' user_id=subscriptionItem.subscribed_to.id %}">Профиль</a>
 
-                <div class="flex align-items-center gap-10px">
-                    <!-- посмотреть профиль -->
-                    <a class="link button-gray-confirm" href="#">Профиль</a>
-
-                    <!-- отписаться -->
-                    <a class="link button-red-confirm" href="#">Отписаться</a>
-                </div>
-            </header>
-        </article>
+                        <!-- отписаться -->
+                        <a class="link button-red-confirm" href="{% url 'users:unsubscribe' user_id=subscriptionItem.subscribed_to.id %}">Отписаться</a>
+                    </div>
+                </header>
+            </article>
+        {% endfor %}
     </section>
+    {% comment %} КОНЕЦ Секция подписок {% endcomment %}
 </main>
 {% endblock content %}
     
