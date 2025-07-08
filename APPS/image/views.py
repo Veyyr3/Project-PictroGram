@@ -88,4 +88,9 @@ def like(request, image_id):
         like.delete()
         messages.success(request, 'Вы удалили лайк!')
 
-    return redirect(reverse('image:index'))
+    # перенаправить на ту страницу, где он находится
+    next_url = request.META.get('HTTP_REFERER')
+    if not next_url:
+        next_url = reverse('image:index') # Запасной вариант: главная страница
+
+    return redirect(next_url)
