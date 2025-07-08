@@ -55,28 +55,33 @@
         <section class="container-comments-section">
             <h4>Комментарии:</h4>
             
+            
+            {% for commentItem in publicationsItem.image_comments.all %}
             <!-- сам комментарий -->
             <article class="container-comment">
                 <!-- шапка комментария -->
                 <header>
                     <!-- фото и имя пользователя -->
-                    {% include 'image/_userName_and_userLogo.html' with  user_logo='' user_name='имя пользователя'  %}
+                    {% include 'image/_userName_and_userLogo.html' with user_id=commentItem.user.id user_avatar=commentItem.user.avatar user_name=commentItem.user.username  %}
 
                     <!-- дата публикации -->
                     <div class="container-publication-date-comment">
-                        <h4>Дата публикации: 12.12.12</h4>
+                        <h4>Дата публикации: {{commentItem.created_at}}</h4>
                     </div>
                 </header>
                 
                 <!-- текст комментария -->
                 <div class="container-comment-content">
-                    <p>текст комментария</p>
+                    <p>{{commentItem.body_text}}</p>
                 </div>
             </article>
             <!-- КОНЕЦ сам комментарий -->
+            {% empty %}
+            <p style="color: black;">Нет комментариев.</p>
+            {% endfor %}
 
             <!-- добавить комментарий -->
-            <div id="add_comment_button" class="container-add-publication">
+            <div class="add-comment-button container-add-publication" data-publication-id="{{ publicationsItem.id }}" data-add-comment-url="{% url 'image:add_comment' publicationsItem.id %}">
                 <div class="special-container-add-publication-plus">
                     <p>+</p>
                 </div>
@@ -96,13 +101,16 @@
     <div id="commentModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <form class="form" action="">
+            <form class="form" action="" method="post" id="commentForm">
+                {% csrf_token %}
+                {# Скрытое поле для ID публикации #}
+                <input type="hidden" name="publication_id" id="modal_publication_id">
                 <!-- заголовок и поля для заполнения комментария -->
                 <div class="container-publication-disc comment-add">
-                    <label for="comment_content"><h4>Комментарий:</h4></label>
-                    <textarea name="comment_content" id="comment_content" rows="10"></textarea>
+                    <label for="id_body_text"><h4>Комментарий:</h4></label>
+                    <textarea name="body_text" id="id_body_text" rows="10" required></textarea>
                 </div>
-                <button class="button-green-confirm">Добавить</button>
+                <button type="submit" class="button-green-confirm">Добавить</button>
             </form>
         </div>
     </div>

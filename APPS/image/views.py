@@ -4,15 +4,16 @@ from django.urls import reverse # возвращает через name, spacenam
 from django.contrib import messages
 from django.db.models import Count, Exists, OuterRef, Value
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 # формочки
-from image.forms import AddPublication
+from image.forms import AddPublication, AddComment
 
 # сообщения
 from django.contrib import messages
 
 # модель
-from image.models import Images, Likes
+from image.models import Images, Likes, Comments
 
 # главная страница
 def index(request):
@@ -93,4 +94,26 @@ def like(request, image_id):
     if not next_url:
         next_url = reverse('image:index') # Запасной вариант: главная страница
 
+    return redirect(next_url)
+
+# добавить комментарий
+@login_required
+@require_POST # Убедитесь, что этот view принимает только POST запросы
+def add_comment(request, image_id):
+    image = get_object_or_404(Images, id=image_id)
+    form = AddComment(request.POST)
+
+    if form.is_valid():
+        comment = form.save(commit=False) # Создаем объект, но не сохраняем его в БД пока
+        comment.user = request.user      # Присваиваем текущего пользователя
+        comment.image = image            # Присваиваем изображение, к которому относится комментарий
+        comment.save()                   # Сохраняем комментарий
+        messages.success(request, 'Комментарий успешно добавлен!')
+    else:
+        messages.error(request, 'Ошибка при добавлении комментария.')
+
+    # Возвращаем пользователя на страницу, с которой он пришел
+    next_url = request.META.get('HTTP_REFERER')
+    if not next_url:
+        next_url = reverse('image:index')
     return redirect(next_url)
