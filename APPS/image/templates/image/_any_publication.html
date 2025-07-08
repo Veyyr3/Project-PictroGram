@@ -9,6 +9,7 @@
     image_title
     image_disc
     is_liked
+    is_profile
 {% endcomment %}
 
 <!-- фото -->
@@ -22,14 +23,23 @@
 <div class="container-title-publication">
     <!-- лайки -->
     <div class="container-like">
-        <a href="{% url 'image:like' image_id=publication_id %}" class="button-like">
-            {% if is_liked %}
-                <img class="isimage" src="{% static 'page_pictures/page decorations/heart_red.png' %}" alt="Liked">
-            {% else %}
-                <img class="isimage" src="{% static 'page_pictures/page decorations/heart.png' %}" alt="Not Liked">
-            {% endif %}
-        </a>
-
+        {% comment %} если это профиль пользователя {% endcomment %}
+        {% if is_profile %}
+            {% comment %} статичная картинка {% endcomment %}
+            <div class="button-like">
+                <img class="isimage" src="{% static 'page_pictures/page decorations/heart_red.png' %}" alt="Лайк">
+            </div>
+        {% else %}
+            {% comment %} можно ставить, удалять лайк {% endcomment %}
+            <a href="{% url 'image:like' image_id=publication_id %}" class="button-like">
+                {% if is_liked %}
+                    <img class="isimage" src="{% static 'page_pictures/page decorations/heart_red.png' %}" alt="Liked">
+                {% else %}
+                    <img class="isimage" src="{% static 'page_pictures/page decorations/heart.png' %}" alt="Not Liked">
+                {% endif %}
+            </a>
+        {% endif %}
+        
         <div>
             <p>{{number_likes}}</p>
         </div>

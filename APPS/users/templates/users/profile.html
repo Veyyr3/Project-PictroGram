@@ -104,7 +104,7 @@
                         {% comment %} КОНЕЦ шапка {% endcomment %}
 
                         {% comment %} место для фото {% endcomment %}
-                        {% include 'image/_any_publication.html' with image=imageItem.image.url publication_id=imageItem.id number_likes=imageItem.like_count image_title=imageItem.image_name image_disc=imageItem.description is_liked=True %}
+                        {% include 'image/_any_publication.html' with image=imageItem.image.url publication_id=imageItem.id number_likes=imageItem.like_count image_title=imageItem.image_name image_disc=imageItem.description is_profile=True %}
 
                         {% comment %} удалить фото (форма для безопасности) {% endcomment %}
                         <div>
