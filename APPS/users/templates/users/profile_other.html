@@ -3,8 +3,34 @@
 
 {% block content %}
     <main class="gap-10px main-profile">
-        {% comment %} Секция профиля {% endcomment %}
+        {% comment %} Секция профиля других {% endcomment %}
         <section class="width-100 flex-column align-items-center">
+            <!-- Ошибки при изменении информации о пользователе -->
+            {% if messages or form.non_field_errors %}
+            <section class="flex-column gap-10px width-100" style="padding: 0 3rem 2rem 3rem;">
+                <div style="width: 100%; text-align: left;">
+                    <h3>Сообщения:</h3>
+                </div>
+
+                {% comment %} вывод ошибок {% endcomment %}
+                <div class="{% if form.non_field_errors %}login-mistakes{% else %}login-success{% endif %}">
+                    {% if messages %}
+                        {% for messageItem in messages %}
+                            <p class="{{ messageItem.tags }}"> {{ messageItem }} </p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {# Вывод общих ошибок формы (например, "Неверный логин или пароль") #}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <p> {{ error }} </p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
+            {% endif %}
+            <!-- КОНЕЦ Ошибки при изменении информации о пользователе -->
+
             <div style="width: 100%; text-align: left;">
                 <h3>Профиль</h3>
             </div>
@@ -79,7 +105,7 @@
             </section>
             {% comment %} КОНЕЦ Публикации {% endcomment %}
         </section>
-        {% comment %} КОНЕЦ Секция профиля {% endcomment %}
+        {% comment %} КОНЕЦ Секция профиля других {% endcomment %}
     </main>
 {% endblock content %}
     
