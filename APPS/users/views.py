@@ -65,9 +65,10 @@ def profile_other(request, user_id):
     # данный пользователь
     this_user = get_object_or_404(User, id=user_id)
 
-    # его публикации
+    # список его публикации
     publications_queryset = Images.objects.filter(user=user_id).order_by('-created_at')
 
+    # добавить к публикациям доп поля
     publications = publications_queryset.annotate(
         # Подсчет лайков для каждой публикации
         like_count=Count('image_likes'), # 'image_likes' - это related_name или дефолтное имя для ForeignKey
@@ -82,6 +83,9 @@ def profile_other(request, user_id):
             )
         )
     )
+
+    # кол-во подписчиков
+    subscribers_count = this_user.subscribers.count()
 
     # Сделал ли ТЕКУЩИЙ АВТОРИЗОВАННЫЙ пользователь подписку на ЭТОГО пользователя
     is_subscribed = False # По умолчанию считаем, что подписки нет
@@ -98,6 +102,7 @@ def profile_other(request, user_id):
         'this_user': this_user,
         'publications': publications,
         'is_subscribed': is_subscribed,
+        'subscribers_count': subscribers_count,
     }
     return render(request, 'users/profile_other.html', context)
 

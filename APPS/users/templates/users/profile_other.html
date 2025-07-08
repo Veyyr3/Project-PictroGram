@@ -64,13 +64,17 @@
                 </div>
 
                 <!-- Подписаться-->
-                <div class="flex jstf-cnt-sp-btw width-100 align-items-center">
+                <div class="flex width-100 align-items-center">
                     {% comment %} если подписка была сделана, то отписываться {% endcomment %}
                     {% if is_subscribed %}
                         <a class="button-red-confirm link to-left" style="color: white;" href="{% url 'users:unsubscribe' user_id=this_user.id %}">Отписаться</a>
                     {% else %}
                         <a class="button-green-confirm link to-left" style="color: white;" href="{% url 'users:subscribe' user_id=this_user.id %}">Подписаться</a>
                     {% endif %}
+                    <!-- кол-во подписчиков -->
+                    <div>
+                        <p>Подписчиков: {{subscribers_count}}</p>
+                    </div>
                 </div>
             </div>
             {% comment %} КОНЕЦ поменять информацию о профиле  {% endcomment %}
