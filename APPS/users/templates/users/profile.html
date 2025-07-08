@@ -71,6 +71,12 @@
                     <!-- добавить фото -->
                     {{form.avatar}}
 
+                    <!-- кол-во подписчков -->
+                    <div>
+                        <p>Подписчиков: {{subscriber_count}}</p>
+                    </div>
+                    
+
                     <!-- выйти или обновить -->
                     <div>
                         <a class="button-red-confirm link" style="color: white;" href="{% url 'users:logout' %}">Выйти из профиля</a>

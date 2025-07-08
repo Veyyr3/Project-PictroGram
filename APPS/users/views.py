@@ -106,8 +106,8 @@ def profile_other(request, user_id):
     }
     return render(request, 'users/profile_other.html', context)
 
-@login_required
 # показать профиль пользователя
+@login_required
 def profile (request):
     if request.method == 'POST':
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES) # заполнить форму данными, которые пользователь запросил, а после заполнить новую форму данными, которые ввел пользователь.
@@ -132,8 +132,15 @@ def profile (request):
     images = images_queryset.annotate(
         like_count=Count('image_likes'),
     )
-     
-    context = {'form': form, 'images': images}
+
+    # посчитать кол-во подписчиков для пользователя
+    subscriber_count = request.user.subscribers.count()
+
+    context = {
+        'form': form, 
+        'images': images,
+        'subscriber_count': subscriber_count,
+    }
     return render(request, 'users/profile.html', context)
 
 # выйти
@@ -185,5 +192,7 @@ def unsubscribe(request, user_id):
     subscription = Subscriptions.objects.get(subscriber=request.user, subscribed_to=user_subscribed_to)
 
     subscription.delete()
+
+    messages.success(request,'Вы успешно отписались от пользователя!')
 
     return redirect(reverse('users:profile_other', kwargs={'user_id': user_subscribed_to.id}))
