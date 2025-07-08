@@ -104,6 +104,10 @@
                         {% comment %} место для фото {% endcomment %}
                         {% include 'image/_any_publication.html' with image=publicationsItem.image.url publication_id=publicationsItem.id number_likes=publicationsItem.like_count image_title=publicationsItem.image_name image_disc=publicationsItem.description is_liked=publicationsItem.is_liked_by_user %}
                     </article>
+                {% empty %}
+                <div class="width-100" style="text-align: center;">
+                    <p>Нет публикаций</p>
+                </div>
                 {% endfor %}
                 <!-- КОНЕЦ Сами публикации -->
             </section>
