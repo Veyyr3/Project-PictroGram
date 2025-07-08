@@ -51,7 +51,7 @@
 
 
             {% comment %} Публикации {% endcomment %}
-            <section>
+            <section class="width-100">
                 <div style="width: 100%; text-align: left;">
                     <h3>Публикации</h3>
                 </div>
@@ -72,7 +72,7 @@
                         {% comment %} КОНЕЦ шапка {% endcomment %}
 
                         {% comment %} место для фото {% endcomment %}
-                        {% include 'image/_any_publication.html' with image=publicationsItem.image.url like_link='#' number_likes='число лайков' image_title=publicationsItem.image_name image_disc=publicationsItem.description %}
+                        {% include 'image/_any_publication.html' with image=publicationsItem.image.url publication_id=publicationsItem.id number_likes=publicationsItem.like_count image_title=publicationsItem.image_name image_disc=publicationsItem.description is_liked=publicationsItem.is_liked_by_user %}
                     </article>
                 {% endfor %}
                 <!-- КОНЕЦ Сами публикации -->

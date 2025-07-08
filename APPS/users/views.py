@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages # messages - флешка
 from django.urls import reverse # возвращает через name, spacename нужный url путь автоматически
 from django.http import HttpResponseForbidden
+from django.db.models import Count, Exists, OuterRef
 
 # декоратор доступа
 from django.contrib.auth.decorators import login_required
@@ -11,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 # импорт модели
-from image.models import Images
+from image.models import Images, Likes
 from users.models import User, Subscriptions
 
 # авторизация пользователя
@@ -59,12 +60,28 @@ def registration (request):
     return render(request, 'users/registration.html', context) # перенаправление на авторизацию
 
 # посмотреть профиль другого пользователя
+@login_required
 def profile_other(request, user_id):
     # данный пользователь
     this_user = get_object_or_404(User, id=user_id)
 
     # его публикации
-    publications = Images.objects.filter(user=user_id).order_by('-created_at')
+    publications_queryset = Images.objects.filter(user=user_id).order_by('-created_at')
+
+    publications = publications_queryset.annotate(
+        # Подсчет лайков для каждой публикации
+        like_count=Count('image_likes'), # 'image_likes' - это related_name или дефолтное имя для ForeignKey
+
+        # Проверка, лайкнул ли ТЕКУЩИЙ пользователь эту публикацию
+        # OuterRef позволяет ссылаться на поле из внешнего запроса
+        # Exists проверяет наличие связанного объекта без полной его загрузки
+        is_liked_by_user=Exists(
+            Likes.objects.filter(
+                image=OuterRef('pk'), # 'pk' относится к текущей публикации во внешнем запросе
+                user=request.user      # Проверяем на текущего пользователя
+            )
+        )
+    )
 
     # Сделал ли ТЕКУЩИЙ АВТОРИЗОВАННЫЙ пользователь подписку на ЭТОГО пользователя
     is_subscribed = False # По умолчанию считаем, что подписки нет
@@ -94,16 +111,23 @@ def profile (request):
         # если форма валидна
         if form.is_valid():
             form.save() # сохранить данные
+            messages.success(request, 'Профиль успешно обновлен!')
             return redirect(reverse('users:profile')) # перенаправляем на ту же страницу, но с обновленными данными
         # если нет
         else:
+            messages.error(request, 'Ошибка при обновлении профиля. Проверьте введенные данные.')
             print(form.errors)
     else:
         form = UserProfileForm(instance=request.user) # показать пользователю форму и заполнить её данными о пользователе
 
-        # взять те фото, которые добавил пользователь
-        images = Images.objects.filter(user=request.user).order_by('-created_at')
-    
+    # взять те фото, которые добавил пользователь
+    images_queryset = Images.objects.filter(user=request.user).order_by('-created_at')
+
+    # добавляем доп. поле для подсчета лайков
+    images = images_queryset.annotate(
+        like_count=Count('image_likes'),
+    )
+     
     context = {'form': form, 'images': images}
     return render(request, 'users/profile.html', context)
 
