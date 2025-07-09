@@ -93,10 +93,38 @@
         {% comment %} КОНЕЦ Комментарии {% endcomment %}
     </article>
     {% endfor %}
-    
     {% comment %} КОНЕЦ главный контейнер с фото и комментариями {% endcomment %}
 
 
+    {% comment %} навигация на странице {% endcomment %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination jstf-cnt-center">
+            <li class="page-next {% if not publications.has_previous %} disabled {% endif %}">
+                <a class="page-link"
+                href="
+                {% if publications.has_previous %}
+                    {% url 'image:index_paginated' publications.previous_page_number %}
+                {% else %}
+                    #
+                {% endif %}
+                    "
+                tabindex="-1"
+                aria-disabled="true">
+                Previous</a>
+            </li>
+        
+            {% for page in publications.paginator.page_range %}
+                <li class="page-item"><a class="page-link" href="{% url 'image:index_paginated' page %}">{{page}}</a></li>
+            {% endfor %}
+            
+            <li class="page-previous {% if not publications.has_next %} disabled {% endif %}">
+                <a class="page-link" href="{% if publications.has_next %} {% url 'image:index_paginated' publications.next_page_number %}{% else %} # {% endif %}">Next</a>
+            </li>
+        </ul>
+    </nav>
+    {% comment %} КОНЕЦ навигация на странице {% endcomment %}
+
+    
     {% comment %} Модальное окно {% endcomment %}
     <div id="commentModal" class="modal">
         <div class="modal-content">

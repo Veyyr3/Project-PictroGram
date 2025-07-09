@@ -34,6 +34,41 @@
   font-size: 100px;
   font-weight: bold;
 }
+.pagination {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.pagination .page-item {
+  border: 1px solid #000;
+  width: 50px;
+  aspect-ratio: 1/1;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .page-item .page-link {
+  text-decoration: none;
+  color: inherit;
+}
+.pagination .disabled {
+  color: gray;
+}
+.pagination .page-next, .pagination .page-previous {
+  border: 1px solid #000;
+  background-color: white;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .page-next .page-link, .pagination .page-previous .page-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .container-img {
   width: 100%;
   height: auto;

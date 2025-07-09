@@ -73,6 +73,58 @@
     }
 }
 
+// контейнер пагинации
+.pagination {
+    height: 50px;
+
+    // flex
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    // квадратик с номером страницы
+    .page-item {
+        border: 1px solid #000;
+        width: 50px;
+        aspect-ratio: 1/1;
+        background-color: white;
+
+        // flex
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // ссылка (цифра страницы)
+        .page-link {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+
+    // не активирован
+    .disabled {
+        color: gray;
+    }
+
+    // следующая, предыдущая страница
+    .page-next, .page-previous {
+        border: 1px solid #000;
+        background-color: white;
+        padding: 0 10px;
+
+        // flex
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // ссылка (цифра страницы)
+        .page-link {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+}
+
 // #region контейнер фото
     // контейнер 1 фото
     .container-img {

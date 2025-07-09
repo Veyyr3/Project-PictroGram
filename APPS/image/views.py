@@ -6,6 +6,8 @@ from django.db.models import Count, Exists, OuterRef, Value
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
+from django.core.paginator import Paginator # импортировать пагинацию
+
 # формочки
 from image.forms import AddPublication, AddComment
 
@@ -16,7 +18,7 @@ from django.contrib import messages
 from image.models import Images, Likes, Comments
 
 # главная страница
-def index(request):
+def index(request, page_number=1):
     # Начальный QuerySet для публикаций
     publications_queryset = Images.objects.all().order_by('-created_at')
 
@@ -41,9 +43,14 @@ def index(request):
             like_count=Count('image_likes'),
             is_liked_by_user=Value(False) # Устанавливаем False для всех неавторизованных
         )
+
+    # пагинация
+    paginator = Paginator(publications, 3)
+    publications_paginator = paginator.page(page_number)
+
     
     context = {
-        'publications': publications,
+        'publications': publications_paginator,
     }
 
     return render(request, 'image/index.html', context)
