@@ -772,13 +772,15 @@
 .container-img-publication {
   background-color: rgb(20, 20, 20);
   width: 100%;
-  height: auto;
+  aspect-ratio: 16/9;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 .container-img-publication img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
